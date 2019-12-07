@@ -27,7 +27,7 @@ const Uparea = () => (
     <style jsx>{`
       .hero {
         text-align: center;
-        margin: 96px 0;
+        margin: 50px 0;
       }
       .hero-social {
         color: #e91e63;

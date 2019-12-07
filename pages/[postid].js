@@ -1,3 +1,4 @@
+//burası tek bir postun göstereleceği sayfa
 import React from "react";
 import Head from "next/head";
 import Blog from "../components/blog";
@@ -6,7 +7,7 @@ import Uparea from "../components/up";
 const BlogPost = ({ post }) => (
   <div className='hero-container'>
     <Head>
-      <title>Home</title>
+      <title>{post.title}</title>
       <link rel='icon' href='/favicon.ico' />
     </Head>
 

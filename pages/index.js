@@ -1,7 +1,6 @@
+//blog ana sayfası
 import React from "react";
 import Head from "next/head";
-
-import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import Uparea from "../components/up";
 import Blog from "../components/blog";
@@ -19,6 +18,7 @@ const Home = ({ posts }) => (
         content={post.content}
         date={post.date}
         slug={post.slug}
+        full={1}
       />
     ))}
 
