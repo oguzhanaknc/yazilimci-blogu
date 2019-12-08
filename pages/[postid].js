@@ -9,6 +9,7 @@ const BlogPost = ({ post }) => (
     <Head>
       <title>{post.title}</title>
       <link rel='icon' href='/favicon.ico' />
+      <style>{globalStyle}</style>
     </Head>
 
     <Uparea />
@@ -17,6 +18,7 @@ const BlogPost = ({ post }) => (
       content={post.content}
       date={post.date}
       slug={post.slug}
+      readtime={post.readtime}
     />
 
     <style jsx>{`
@@ -35,4 +37,9 @@ BlogPost.getInitialProps = async ({ req, query }) => {
 
   return { post: json.post };
 };
+const globalStyle = `
+body {
+  background: url('https://i.hizliresim.com/mX9n9R.png');
+}
+`;
 export default BlogPost;

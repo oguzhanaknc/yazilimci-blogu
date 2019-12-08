@@ -4,12 +4,17 @@ import Head from "next/head";
 import fetch from "isomorphic-unfetch";
 import Uparea from "../components/up";
 import Blog from "../components/blog";
-import "../public/style";
+
 const Home = ({ posts }) => (
   <div className='hero-container'>
     <Head>
       <title>Home</title>
       <link rel='icon' href='/favicon.ico' />
+      <link
+        href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
+        rel='stylesheet'
+      ></link>
+      <style>{globalStyle}</style>
     </Head>
     <Uparea />
     {posts.map(post => (
@@ -19,6 +24,7 @@ const Home = ({ posts }) => (
         date={post.date}
         slug={post.slug}
         full={1}
+        readtime={post.readtime}
       />
     ))}
 
@@ -37,4 +43,9 @@ Home.getInitialProps = async ({ req }) => {
 
   return { posts: json.posts };
 };
+const globalStyle = `
+body {
+  background: url('https://i.hizliresim.com/DOvavO.png');
+}
+`;
 export default Home;
