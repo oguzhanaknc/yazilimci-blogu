@@ -20,7 +20,8 @@ Selman Kahyanın başlatığı yarışma vesilesiyle yazmaya başladığım blog
 	- [x] Site Arkaplanını Değiştir
 	- [ ] Hakkımda Sayfasını Mobil Uyumlu Yap
 	- [ ] Sosyal Medyada Paylaş Buttonlarını Düzenle
-	- [ ] Yorum Yazma Alanı Ekle
+	- [x] Yorum Yazma Alanı Ekle
+	- [x] Yorum Listeleme Alanı Ekle
 	- [ ] Admin Giriş Sayafası
 - [ ] Eklenecek Özellikler
     - [x] Ortalama Okuma Süresini Hesapla
