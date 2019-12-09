@@ -13,10 +13,10 @@ export const getPosts = async full => {
       readtime: readtime(contentiki)
     },
     {
-      title: "Markdown test yazısı",
+      title: "Loerm Ipsum Nedir ?",
       content: content.default.substring(0, full),
-      date: "07.12.1999",
-      slug: "markdown-test",
+      date: "08.12.1999",
+      slug: "lorem-ipsum-nedir-iki",
       readtime: readtime(content)
     }
   ];

@@ -7,6 +7,8 @@ import {
   FacebookIcon,
   TwitterIcon
 } from "react-share";
+import Commentarea from "./comment";
+import CommentSarea from "./comments";
 const Blog = props => (
   <div>
     <div className='card'>
@@ -29,37 +31,42 @@ const Blog = props => (
           <a className='blog-header'>{props.title}</a>
         </Link>
         <ReactMarkdown className='blog-content' source={props.content} />
+        <div className='blog-date'>{props.date}</div>
       </div>
-      <div className='share-with-social'>
-        <h4 className='share-text'>Sosyal Medyada Paylaş</h4>
-        <ul>
-          <li>
-            {" "}
-            <FacebookShareButton
-              quote='Bu muhteşem yazıya kesın bakın.'
-              url='google.com'
-            >
-              <FacebookIcon />
-            </FacebookShareButton>{" "}
-          </li>
-          <li>
-            {" "}
-            <TwitterShareButton
-              className='twitter-share'
-              quote='Bu muhteşem yazıya kesın bakın.'
-              url='google.com'
-            >
-              <TwitterIcon
-                quote='Bu muhteşem yazıya kesın bakın.'
-                url='google.com'
-              />
-            </TwitterShareButton>{" "}
-          </li>
-        </ul>
-      </div>
-      <hr></hr>
+      {props.full != 1 && (
+        <div>
+          <CommentSarea />
+          <Commentarea />
+          <div className='share-with-social'>
+            <h4 className='share-text'>Sosyal Medyada Paylaş</h4>
+            <ul>
+              <li>
+                {" "}
+                <FacebookShareButton
+                  quote='Bu muhteşem yazıya kesın bakın.'
+                  url='google.com'
+                >
+                  <FacebookIcon />
+                </FacebookShareButton>{" "}
+              </li>
+              <li>
+                {" "}
+                <TwitterShareButton
+                  className='twitter-share'
+                  quote='Bu muhteşem yazıya kesın bakın.'
+                  url='google.com'
+                >
+                  <TwitterIcon
+                    quote='Bu muhteşem yazıya kesın bakın.'
+                    url='google.com'
+                  />
+                </TwitterShareButton>{" "}
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
 
-      <div className='blog-date'>{props.date}</div>
       {props.full == 1 && (
         <Link href={props.slug}>
           <button type='button' className='block button'>

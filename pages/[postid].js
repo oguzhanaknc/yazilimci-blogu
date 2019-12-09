@@ -4,7 +4,7 @@ import Head from "next/head";
 import Blog from "../components/blog";
 import Uparea from "../components/up";
 
-const BlogPost = ({ post }) => (
+const BlogPost = ({ post, comment }) => (
   <div className='hero-container'>
     <Head>
       <title>{post.title}</title>
@@ -19,6 +19,7 @@ const BlogPost = ({ post }) => (
       date={post.date}
       slug={post.slug}
       readtime={post.readtime}
+      comments={comment}
     />
 
     <style jsx>{`
@@ -35,7 +36,7 @@ BlogPost.getInitialProps = async ({ req, query }) => {
 
   const json = await res.json();
 
-  return { post: json.post };
+  return { post: json.post, comment: json.comment };
 };
 const globalStyle = `
 body {
