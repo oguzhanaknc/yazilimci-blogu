@@ -10,15 +10,20 @@
   "dependencies": {
     "@blueprintjs/core": "^3.22.1",
     "baseui": "^9.27.0",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.5.2",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.1.4",
     "pagination": "^0.4.6",
     "raw-loader": "^4.0.0",
     "react": "^16.12.0",
+    "react-device-detect": "^1.11.14",
     "react-dom": "^16.12.0",
     "react-markdown": "^4.2.2",
     "react-next-paging": "^7.0.7",
     "react-share": "^3.0.1",
+    "rxfire": "^3.9.4",
+    "rxjs": "^6.5.3",
     "styletron-engine-atomic": "^1.4.4",
     "styletron-react": "^5.2.6"
   }

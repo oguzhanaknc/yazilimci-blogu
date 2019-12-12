@@ -5,12 +5,12 @@ const CommentSarea = props => (
   <div>
     <hr />
     <div className='hero'>
-      <h2 className='comment-title'>Yorumlar</h2>
+      <h5 className='comment-title'>Yorumlar</h5>
       <div className='comment-show-area'>
-        <h4 className='comment-author'>Selman Kayha</h4>
-        <h5 className='comment-comment'>
+        <h6 className='comment-author'>Selman Kayha</h6>
+        <p className='comment-comment'>
           "Gerçekten Harika Bir Blog Olmuş Büyük Ödül Senin"
-        </h5>
+        </p>
       </div>
     </div>
 

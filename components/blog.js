@@ -12,24 +12,15 @@ import CommentSarea from "./comments";
 const Blog = props => (
   <div>
     <div className='card'>
-      <div className='cardbody'>
-        <div className='author-area'>
-          <div className='blog-details'>Oğuzhan Akıncı</div>
-          <div className='blog-min-read'>{props.readtime} min read</div>
-          <img
-            src='https://www.w3schools.com/howto/img_avatar.png'
-            alt='Avatar'
-            className='avatar'
-          ></img>
+      <div class='card-image'>
+        <img src='https://images.unsplash.com/photo-1477988976454-4477e6d161d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80' />
+        <div className='asd'>
+          <span class='card-title'>{props.title}</span>
         </div>
-        <img
-          src='https://miro.medium.com/max/4000/1*S4golQzBEiv42TvhQSig1w.jpeg'
-          alt='Avatar'
-          className='blog-image'
-        ></img>
-        <Link href={props.slug}>
-          <a className='blog-header'>{props.title}</a>
-        </Link>
+      </div>
+      <div class='card-content'>
+        <div className='blog-min-read'>{props.readtime} min read</div>
+        <hr />
         <ReactMarkdown className='blog-content' source={props.content} />
         <div className='blog-date'>{props.date}</div>
       </div>
@@ -37,42 +28,15 @@ const Blog = props => (
         <div>
           <CommentSarea />
           <Commentarea />
-          <div className='share-with-social'>
-            <h4 className='share-text'>Sosyal Medyada Paylaş</h4>
-            <ul>
-              <li>
-                {" "}
-                <FacebookShareButton
-                  quote='Bu muhteşem yazıya kesın bakın.'
-                  url='google.com'
-                >
-                  <FacebookIcon />
-                </FacebookShareButton>{" "}
-              </li>
-              <li>
-                {" "}
-                <TwitterShareButton
-                  className='twitter-share'
-                  quote='Bu muhteşem yazıya kesın bakın.'
-                  url='google.com'
-                >
-                  <TwitterIcon
-                    quote='Bu muhteşem yazıya kesın bakın.'
-                    url='google.com'
-                  />
-                </TwitterShareButton>{" "}
-              </li>
-            </ul>
-          </div>
         </div>
       )}
 
       {props.full == 1 && (
-        <Link href={props.slug}>
-          <button type='button' className='block button'>
-            Devamını Oku
-          </button>
-        </Link>
+        <div class='card-action'>
+          <Link href={props.slug}>
+            <a>Devamını Oku</a>
+          </Link>
+        </div>
       )}
     </div>
 
@@ -86,61 +50,15 @@ const Blog = props => (
         display: inline;
         margin: 20px;
       }
-      .share-text {
-        font-family: "Montserrat", sans-serif;
-        font-size: 15px;
-        color: #002f6c;
-      }
-      .share-with-social {
-        margin: 10px 0 0 35%;
-      }
-      .blog-details {
-        text-align: center;
-        position: absolute;
-        margin: 5px 0 0 60px;
-        font-size: 15px;
-      }
+
       .blog-min-read {
-        text-align: center;
-        position: absolute;
-        margin: 25px 0 0 60px;
+        text-align: left;
+
         font-size: 12px;
       }
-      .blog-image {
-        width: 100%;
-        height: 350px;
-      }
-      .avatar {
-        vertical-align: middle;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-      }
-      .author-area {
-        margin: 0 55% 20px 20px;
-      }
-      .block {
-        display: block;
-        width: 100%;
-        border: none;
-        background-color: #fff;
-        padding: 14px 28px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-        color: #000;
-        border: 2px solid #000; /* Green */
-        margin-bottom: 16px;
-        font-family: "Montserrat", sans-serif;
-      }
-      .blog-content {
-        font-family: "Montserrat", sans-serif;
-      }
-      .button:hover {
-        background-color: #000; /* Green */
-        color: #fff;
-      }
+
       .blog-header {
+        margin-left: 30%;
         color: #002f6c;
         font-size: 28px;
         font-family: "Montserrat", sans-serif;
@@ -154,20 +72,6 @@ const Blog = props => (
         color: #000a12;
         margin: 10px 25px 25px 25px;
         font-family: "Montserrat", sans-serif;
-      }
-      .card {
-        box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        background: #fff;
-      }
-
-      .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-      }
-
-      .cardbody {
-        font-family: "Montserrat", sans-serif;
-        padding: 16px 16px;
       }
     `}</style>
   </div>

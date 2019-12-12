@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const Uparea = () => (
-  <div>
-    <div className='hero'>
+  <div className='hero'>
+    <div>
       <h1 className='hero-title'>Oğuzhan A.</h1>
 
       <div className='hero-main-links'>
@@ -14,6 +14,7 @@ const Uparea = () => (
           <a className='main-link'>Hakkımda</a>
         </Link>
       </div>
+      <hr />
       <div className='hero-social-links'>
         <Link href='https://www.instagram.com/oguzhanaknc_/'>
           <a className='hero-social'>Instagram</a>
@@ -28,12 +29,15 @@ const Uparea = () => (
           <a className='hero-social'>Linkedin</a>
         </Link>
       </div>
+      <hr />
     </div>
 
     <style jsx>{`
       .hero {
         text-align: center;
-        margin: 10px 0 10px 0;
+        margin: 0px 0 10px 0;
+        background: #fff;
+        top: 0;
       }
       .hero-social {
         color: #00838f;
@@ -45,8 +49,8 @@ const Uparea = () => (
         color: #d50000;
       }
       .hero-title {
-        font-size: 48px;
-        font-family: "Baskervville", serif;
+        font-size: 52px;
+        font-family: "Sacramento", cursive;
       }
       .main-link {
         margin-right: 8px;

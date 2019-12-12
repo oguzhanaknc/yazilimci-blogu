@@ -7,24 +7,26 @@ const Commentarea = () => (
     <div className='hero'>
       <div>Yorum Yap</div>
       <br />
-      <form className='comment-from' action='/' id='usrform'>
-        {" "}
-        <input
-          placeholder='Ekranda Gözükecek İsminiz'
-          className='comment-name-area'
-          type='text'
-          name='usrname'
-        />
-        <br />
-        <textarea
-          className='comment-comment-area'
-          name='comment'
-          form='usrform'
-          placeholder='Yorumunuz'
-        ></textarea>
-        <br />
-        <input className='comment-button' type='submit' />
-      </form>
+      <div class='input-field col s6'>
+        <input id='icon_prefix' type='text' class='validate' />
+        <label for='icon_prefix'>Adınız </label>
+        <div class='input-field col s12'>
+          <textarea
+            id='textarea2'
+            class='materialize-textarea'
+            data-length='120'
+          ></textarea>
+          <label for='textarea2'>Yorumunuz</label>
+          <button
+            class='btn waves-effect waves-light'
+            type='submit'
+            name='action'
+          >
+            Gönder
+            <i class='material-icons right'>send</i>
+          </button>
+        </div>
+      </div>
     </div>
     <hr />
     <style jsx>{`
