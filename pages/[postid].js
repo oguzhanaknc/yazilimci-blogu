@@ -3,7 +3,7 @@ import React from "react";
 import Head from "next/head";
 import Blog from "../components/blog";
 import Uparea from "../components/up";
-
+import { NextSeo } from "next-seo";
 const BlogPost = ({ post, comment }) => (
   <div className='hero-container'>
     <Head>
@@ -46,7 +46,7 @@ const BlogPost = ({ post, comment }) => (
 );
 BlogPost.getInitialProps = async ({ req, query }) => {
   const res = await fetch(
-    `https://oguzhanaknc.herokuapp.com/api/post/${query.postid}`
+    " http://" + process.env.URL + `/api/post/${query.postid}`
   );
 
   const json = await res.json();
@@ -58,4 +58,5 @@ body {
   background: url('https://i.hizliresim.com/mX9n9R.png');
 }
 `;
+
 export default BlogPost;

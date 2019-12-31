@@ -28,8 +28,8 @@ const About = ({ posts }) => (
         üzerinde pratik yapmaya çalışıyorum.
       </p>
 
-      <span class='left bottom'>oguzhanaknc06@gmail.com </span>
-      <span class='right bottom'>Ankara / Trabzon</span>
+      <span className='left bottom'>oguzhanaknc06@gmail.com </span>
+      <span className='right bottom'>Ankara / Trabzon</span>
       <div className='hero-main-links'>
         <Link href='/index'>
           <a className='main-link'>Anasayfa</a>

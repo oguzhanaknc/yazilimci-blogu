@@ -25,12 +25,8 @@ const Home = ({ posts, repos }) => (
         href='https://fonts.googleapis.com/icon?family=Material+Icons'
         rel='stylesheet'
       ></link>
-      <link
-        rel='stylesheet'
-        href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'
-      ></link>
 
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+      <link href='/static/materialize.min.css' rel='stylesheet' />
 
       <style>{globalStyle}</style>
     </Head>
@@ -45,6 +41,8 @@ const Home = ({ posts, repos }) => (
           slug={post.slug}
           full={1}
           readtime={post.readtime}
+          image={post.image}
+          key={post.id}
         />
       ))}
       {posts.map(post => (
@@ -55,6 +53,8 @@ const Home = ({ posts, repos }) => (
           slug={post.slug}
           full={1}
           readtime={post.readtime}
+          image={post.image}
+          key={post.id}
         />
       ))}
     </div>
@@ -76,7 +76,7 @@ const Home = ({ posts, repos }) => (
   </div>
 );
 Home.getInitialProps = async ({ req }) => {
-  const res = await fetch("https://oguzhanaknc.herokuapp.com/api/posts");
+  const res = await fetch("http://" + process.env.URL + "/api/posts");
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );

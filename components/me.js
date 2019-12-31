@@ -10,12 +10,12 @@ const Me = () => (
   <div>
     <BrowserView>
       <div className='card-wrapper'>
-        <div class='card'>
-          <div class='card-image'>
+        <div className='card'>
+          <div className='card-image'>
             <img src='https://avatars1.githubusercontent.com/u/16177609?v=4' />
-            <span class='card-title'>Oğuzhan Akıncı</span>
+            <span className='card-title'>Oğuzhan Akıncı</span>
           </div>
-          <div class='card-content'>
+          <div className='card-content'>
             <p>
               Ben Oğuzhan Akıncı. Karadeniz Teknik Üniversitesi İstatistik ve
               Bilgisayar Bilimleri 3.Sınıf Öğrencisiyim. Javascript dili ile

@@ -12,13 +12,11 @@ import CommentSarea from "./comments";
 const Blog = props => (
   <div>
     <div className='card'>
-      <div class='card-image'>
-        <img src='https://images.unsplash.com/photo-1477988976454-4477e6d161d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80' />
-        <div className='asd'>
-          <span class='card-title'>{props.title}</span>
-        </div>
+      <div className='card-image'>
+        <img src={props.image} />
       </div>
-      <div class='card-content'>
+      <span className='mt'>{props.title}</span>
+      <div className='card-content'>
         <div className='blog-min-read'>{props.readtime} min read</div>
         <hr />
         <ReactMarkdown className='blog-content' source={props.content} />
@@ -32,7 +30,7 @@ const Blog = props => (
       )}
 
       {props.full == 1 && (
-        <div class='card-action'>
+        <div className='card-action'>
           <Link href={props.slug}>
             <a>Devamını Oku</a>
           </Link>
@@ -66,6 +64,9 @@ const Blog = props => (
       a {
         color: #002f6c;
         text-decoration: none;
+      }
+      .mt {
+        font-size: 60px !important;
       }
       .blog-date {
         text-align: right;

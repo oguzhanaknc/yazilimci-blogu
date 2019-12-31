@@ -7,17 +7,23 @@ export const getPosts = async full => {
   return [
     {
       title: "Loerm Ipsum Nedir ?",
+      id: 1,
       content: contentiki.default.substring(0, full),
       date: "08.12.1999",
       slug: "lorem-ipsum-nedir",
-      readtime: readtime(contentiki)
+      readtime: readtime(contentiki),
+      image:
+        "https://cdna.artstation.com/p/assets/images/images/007/323/062/large/alena-aenami-stay-1k.jpg?1505326688"
     },
     {
       title: "Loerm Ipsum Nedir ?",
+      id: 2,
       content: content.default.substring(0, full),
       date: "08.12.1999",
       slug: "lorem-ipsum-nedir-iki",
-      readtime: readtime(content)
+      readtime: readtime(content),
+      image:
+        "https://cdnb.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg?1504395238"
     }
   ];
 };

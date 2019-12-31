@@ -4,5 +4,4 @@ export default async (req, res) => {
   res.json({
     comment: "hello"
   });
-  console.log(564564654564);
 };

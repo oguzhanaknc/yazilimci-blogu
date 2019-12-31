@@ -7,23 +7,23 @@ const Commentarea = () => (
     <div className='hero'>
       <div>Yorum Yap</div>
       <br />
-      <div class='input-field col s6'>
-        <input id='icon_prefix' type='text' class='validate' />
+      <div className='input-field col s6'>
+        <input id='icon_prefix' type='text' className='validate' />
         <label for='icon_prefix'>Adınız </label>
-        <div class='input-field col s12'>
+        <div className='input-field col s12'>
           <textarea
             id='textarea2'
-            class='materialize-textarea'
+            className='materialize-textarea'
             data-length='120'
           ></textarea>
           <label for='textarea2'>Yorumunuz</label>
           <button
-            class='btn waves-effect waves-light'
+            className='btn waves-effect waves-light'
             type='submit'
             name='action'
           >
             Gönder
-            <i class='material-icons right'>send</i>
+            <i className='material-icons right'>send</i>
           </button>
         </div>
       </div>
