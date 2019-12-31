@@ -7,7 +7,7 @@ const Uparea = () => (
       <h1 className='hero-title'>Oğuzhan A.</h1>
 
       <div className='hero-main-links'>
-        <Link href='/index'>
+        <Link href='http://oguzhanaknc.herokuapp.com/'>
           <a className='main-link'>Anasayfa</a>
         </Link>
         <Link href='/about'>
