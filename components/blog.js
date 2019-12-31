@@ -15,7 +15,7 @@ const Blog = props => (
       <div className='card-image'>
         <img src={props.image} />
       </div>
-      <span className='mt'>{props.title}</span>
+      <span className='card-title'>{props.title}</span>
       <div className='card-content'>
         <div className='blog-min-read'>{props.readtime} min read</div>
         <hr />
