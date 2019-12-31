@@ -1,7 +1,11 @@
 {
   "name": "yazilimci-gunlugu",
-  "version": "0.1.0",
+  "description": "This is a personal blog :D ",
+  "version": "1.0.3",
   "private": true,
+  "engines": {
+    "node": "10.16.3"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
