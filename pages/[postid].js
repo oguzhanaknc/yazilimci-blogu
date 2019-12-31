@@ -45,10 +45,15 @@ const BlogPost = ({ post, comment }) => (
   </div>
 );
 BlogPost.getInitialProps = async ({ req, query }) => {
-  const res = await fetch(
-    " http://" + process.env.URL + `/api/post/${query.postid}`
-  );
-
+  if (process.env.URL == "oguzhanaknc.herokuapp.com") {
+    const res = await fetch(
+      " https://" + process.env.URL + `/api/post/${query.postid}`
+    );
+  } else {
+    const res = await fetch(
+      " http://" + process.env.URL + `/api/post/${query.postid}`
+    );
+  }
   const json = await res.json();
 
   return { post: json.post, comment: json.comment };
