@@ -14,29 +14,34 @@ const Uparea = () => (
           <a className='main-link'>Hakkımda</a>
         </Link>
       </div>
-      <hr />
-      <div className='hero-social-links'>
-        <Link href='https://www.instagram.com/oguzhanaknc_/'>
-          <a className='hero-social'>Instagram</a>
-        </Link>
-        <Link href='https://twitter.com/oguzhanaknc'>
-          <a className='hero-social'>Twitter</a>
-        </Link>
-        <Link href=''>
-          <a className='hero-social'>Github</a>
-        </Link>
-        <Link href=''>
-          <a className='hero-social'>Linkedin</a>
-        </Link>
+      <div>
+        <hr />
+        <div className='hero-social-links'>
+          <Link href='https://www.instagram.com/oguzhanaknc_/'>
+            <a className='hero-social'>Instagram</a>
+          </Link>
+          <Link href='https://twitter.com/oguzhanaknc'>
+            <a className='hero-social'>Twitter</a>
+          </Link>
+          <Link href=''>
+            <a className='hero-social'>Github</a>
+          </Link>
+          <Link href=''>
+            <a className='hero-social'>Linkedin</a>
+          </Link>
+        </div>
+        <hr />
       </div>
-      <hr />
     </div>
 
     <style jsx>{`
+      .colorm {
+        background: #fff;
+      }
       .hero {
         text-align: center;
         margin: 0px 0 10px 0;
-        background: #fff;
+
         top: 0;
       }
       .hero-social {

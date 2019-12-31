@@ -11,6 +11,7 @@
     "@blueprintjs/core": "^3.22.1",
     "baseui": "^9.27.0",
     "dotenv": "^8.2.0",
+    "dotenv-flow": "^3.1.0",
     "firebase": "^7.5.2",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.1.4",

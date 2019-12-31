@@ -12,14 +12,14 @@ const Me = () => (
       <div className='card-wrapper'>
         <div class='card'>
           <div class='card-image'>
-            <img src='https://excellentdynamics.biz/demos/themes/beauty-blog/wp-content/uploads/2018/08/roxy.jpg' />
+            <img src='https://avatars1.githubusercontent.com/u/16177609?v=4' />
             <span class='card-title'>Oğuzhan Akıncı</span>
           </div>
           <div class='card-content'>
             <p>
-              I am a very simple card. I am good at containing small bits of
-              information. I am convenient because I require little markup to
-              use effectively.
+              Ben Oğuzhan Akıncı. Karadeniz Teknik Üniversitesi İstatistik ve
+              Bilgisayar Bilimleri 3.Sınıf Öğrencisiyim. Javascript dili ile
+              yazılım geliştirme konusunda hevesli bir yazılımcı adayıyım.
             </p>
           </div>
         </div>

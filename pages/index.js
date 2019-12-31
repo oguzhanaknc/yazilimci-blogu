@@ -6,7 +6,9 @@ import fetch from "isomorphic-unfetch";
 import Uparea from "../components/up";
 import Blog from "../components/blog";
 
-const Home = ({ posts }) => (
+import Mytable from "../components/table";
+
+const Home = ({ posts, repos }) => (
   <div>
     <Head>
       <title>Home</title>
@@ -29,8 +31,10 @@ const Home = ({ posts }) => (
       ></link>
 
       <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+
       <style>{globalStyle}</style>
     </Head>
+
     <Uparea />
     <div className='hero-container'>
       {posts.map(post => (
@@ -55,6 +59,7 @@ const Home = ({ posts }) => (
       ))}
     </div>
     <Me />
+    <Mytable repos={repos} />
     <style jsx>{`
       .hero-container {
         max-width: 750px;
@@ -71,10 +76,15 @@ const Home = ({ posts }) => (
   </div>
 );
 Home.getInitialProps = async ({ req }) => {
-  const res = await fetch("http://localhost:3000/api/posts");
+  const res = await fetch(
+    "http://" + process.env.PRODUCTION_URL + "/api/posts"
+  );
+  const resforrepo = await fetch(
+    `https://api.github.com/users/oguzhanaknc/repos?sort=created`
+  );
   const json = await res.json();
-
-  return { posts: json.posts };
+  const repoJson = await resforrepo.json();
+  return { posts: json.posts, repos: repoJson.slice(0, 3) };
 };
 const globalStyle = `
 body {

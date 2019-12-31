@@ -1,6 +1,6 @@
 const webpack = require("webpack");
-require("dotenv").config();
 
+require("dotenv-flow").config();
 module.exports = {
   webpack: config => {
     config.module.rules.push({

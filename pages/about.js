@@ -20,11 +20,15 @@ const About = ({ posts }) => (
       <h2>Oğuzhan Akıncı</h2>
       <p>Karadeniz Teknik Üniversitesi Öğrencisi</p>
       <p>
-        Interested in Web technologies like HTML5, CSS3, JavaScript, PHP, MySQL,
-        etc.
+        en Oğuzhan Akıncı. Karadeniz Teknik Üniversitesi İstatistik ve
+        Bilgisayar Bilimleri 3.Sınıf Öğrencisiyim. Javascript dili ile yazılım
+        geliştirme konusunda hevesli bir yazılımcı adayıyım. Son zamanlarda
+        kendimi Genetik ve Everimsel Programlama algoritmaları üzerinde
+        geliştirmeye çalışıyorum. neuroevolution (Nöro Evrimsel) programlama
+        üzerinde pratik yapmaya çalışıyorum.
       </p>
-      <p>Love Codepen.io and respect Chris Coyier. ;)</p>
-      <span class='left bottom'>oguzhanaknc06@gmail.com</span>
+
+      <span class='left bottom'>oguzhanaknc06@gmail.com </span>
       <span class='right bottom'>Ankara / Trabzon</span>
       <div className='hero-main-links'>
         <Link href='/index'>
@@ -91,7 +95,7 @@ const About = ({ posts }) => (
       #card {
         position: absolute;
         width: 450px;
-        height: 225px;
+        height: 300px;
         padding: 25px;
         padding-top: 0;
         padding-bottom: 0;
