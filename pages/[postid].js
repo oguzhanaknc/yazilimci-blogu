@@ -46,7 +46,7 @@ const BlogPost = ({ post, comment }) => (
 );
 BlogPost.getInitialProps = async ({ req, query }) => {
   const res = await fetch(
-    "http://" + process.env.PRODUCTION_URL + `/api/post/${query.postid}`
+    `https://oguzhanaknc.herokuapp.com/api/post/${query.postid}`
   );
 
   const json = await res.json();
