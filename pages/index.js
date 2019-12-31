@@ -76,12 +76,7 @@ const Home = ({ posts, repos }) => (
   </div>
 );
 Home.getInitialProps = async ({ req }) => {
-  if (process.env.URL == "oguzhanaknc.herokuapp.com") {
-    const res = await fetch("https://" + process.env.URL + "/api/posts");
-  } else {
-    const res = await fetch("http://" + process.env.URL + "/api/posts");
-  }
-
+  const res = await fetch(process.env.URL + "/api/posts");
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );
