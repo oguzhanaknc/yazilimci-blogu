@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
-} from "react-device-detect";
+import { BrowserView } from "react-device-detect";
 const Mytable = ({ repos }) => (
   <BrowserView>
     <div>

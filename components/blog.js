@@ -1,12 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  FacebookIcon,
-  TwitterIcon
-} from "react-share";
+import { BrowserView } from "react-device-detect";
 import Commentarea from "./comment";
 import CommentSarea from "./comments";
 const Blog = props => (
@@ -14,7 +9,9 @@ const Blog = props => (
     <div className='card'>
       <div className='card-image'>
         <img src={props.image} />
-        <span className='card-title'>{props.title}</span>
+        <BrowserView>
+          <span className='card-title'>{props.title}</span>
+        </BrowserView>
       </div>
 
       <div className='card-content'>

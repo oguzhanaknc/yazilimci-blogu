@@ -23,10 +23,10 @@ const Uparea = () => (
           <Link href='https://twitter.com/oguzhanaknc'>
             <a className='hero-social'>Twitter</a>
           </Link>
-          <Link href=''>
+          <Link href='https://github.com/oguzhanaknc'>
             <a className='hero-social'>Github</a>
           </Link>
-          <Link href=''>
+          <Link href='https://www.linkedin.com/in/oguzhanaknc/'>
             <a className='hero-social'>Linkedin</a>
           </Link>
         </div>
