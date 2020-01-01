@@ -9,7 +9,7 @@ const Blog = props => (
     <div className='card'>
       <div className='card-image'>
         <img src={props.image} />
-        <span className='card-title' href={props.slug}>
+        <span className='card-title' href={"/" + props.slug}>
           {props.title}
         </span>
       </div>
