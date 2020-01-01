@@ -9,7 +9,9 @@ const Blog = props => (
     <div className='card'>
       <div className='card-image'>
         <img src={props.image} />
-        <span className='card-title'>{props.title}</span>
+        <span className='card-title' href={props.slug}>
+          {props.title}
+        </span>
       </div>
 
       <div className='card-content'>
