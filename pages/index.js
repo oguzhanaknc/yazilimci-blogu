@@ -1,17 +1,16 @@
 //blog ana sayfası
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Me from "../components/me";
 import fetch from "isomorphic-unfetch";
 import Uparea from "../components/up";
 import Blog from "../components/blog";
-
 import Mytable from "../components/table";
-
-const Home = ({ posts, repos }) => (
+import { useContext } from "react";
+const Home = ({ posts, repos, pages }) => (
   <div>
     <Head>
-      <title>Home</title>
+      <title>Oguzhan Akinci</title>
       <link rel='icon' href='/favicon.ico' />
       <link
         href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
@@ -45,21 +44,16 @@ const Home = ({ posts, repos }) => (
           key={post.id}
         />
       ))}
-      {posts.map(post => (
-        <Blog
-          title={post.title}
-          content={post.content}
-          date={post.date}
-          slug={post.slug}
-          full={1}
-          readtime={post.readtime}
-          image={post.image}
-          key={post.id}
-        />
-      ))}
     </div>
     <Me />
     <Mytable repos={repos} />
+    <button
+      onClick={() => {
+        pages++;
+      }}
+    >
+      {pages}
+    </button>
     <style jsx>{`
       .hero-container {
         max-width: 750px;
@@ -75,14 +69,17 @@ const Home = ({ posts, repos }) => (
     `}</style>
   </div>
 );
+
 Home.getInitialProps = async ({ req }) => {
+  //const res = await fetch("https://oguzhanaknc.herokuapp.com/api/posts");
   const res = await fetch("https://oguzhanaknc.herokuapp.com/api/posts");
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );
   const json = await res.json();
   const repoJson = await resforrepo.json();
-  return { posts: json.posts, repos: repoJson.slice(0, 3) };
+  const pageCount = json.posts.length;
+  return { posts: json.posts, repos: repoJson.slice(0, 3), pages: pageCount };
 };
 const globalStyle = `
 body {

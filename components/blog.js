@@ -9,9 +9,7 @@ const Blog = props => (
     <div className='card'>
       <div className='card-image'>
         <img src={props.image} />
-        <BrowserView>
-          <span className='card-title'>{props.title}</span>
-        </BrowserView>
+        <span className='card-title'>{props.title}</span>
       </div>
 
       <div className='card-content'>

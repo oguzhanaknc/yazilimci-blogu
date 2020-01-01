@@ -6,7 +6,7 @@ import Link from "next/link";
 const About = ({ posts }) => (
   <div className='hero-container'>
     <Head>
-      <title>About Me</title>
+      <title>Hakkımda</title>
       <link rel='icon' href='/favicon.ico' />
       <link
         href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
@@ -31,7 +31,7 @@ const About = ({ posts }) => (
       <span className='left bottom'>oguzhanaknc06@gmail.com </span>
       <span className='right bottom'>Ankara / Trabzon</span>
       <div className='hero-main-links'>
-        <Link href='/index'>
+        <Link href='http://oguzhan.codes'>
           <a className='main-link'>Anasayfa</a>
         </Link>
       </div>
