@@ -6,61 +6,63 @@ import fetch from "isomorphic-unfetch";
 import Uparea from "../components/up";
 import Blog from "../components/blog";
 import Mytable from "../components/table";
-
+import GoogleWrapper from "../components/layout";
 const Home = ({ posts, repos, pages }) => (
-  <div>
-    <Head>
-      <title>Oguzhan Akinci</title>
-      <link rel='icon' href='/favicon.ico' />
-      <link
-        href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
-        rel='stylesheet'
-      ></link>
-      <link
-        href='https://fonts.googleapis.com/css?family=Sacramento&display=swap'
-        rel='stylesheet'
-      ></link>
-      <link
-        href='https://fonts.googleapis.com/icon?family=Material+Icons'
-        rel='stylesheet'
-      ></link>
+  <GoogleWrapper>
+    <div>
+      <Head>
+        <title>Oguzhan Akinci</title>
+        <link rel='icon' href='/favicon.ico' />
+        <link
+          href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
+          rel='stylesheet'
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/css?family=Sacramento&display=swap'
+          rel='stylesheet'
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/icon?family=Material+Icons'
+          rel='stylesheet'
+        ></link>
 
-      <link href='/static/materialize.min.css' rel='stylesheet' />
+        <link href='/static/materialize.min.css' rel='stylesheet' />
 
-      <style>{globalStyle}</style>
-    </Head>
+        <style>{globalStyle}</style>
+      </Head>
 
-    <Uparea />
-    <div className='hero-container'>
-      {posts.map(post => (
-        <Blog
-          title={post.title}
-          content={post.content}
-          date={post.date}
-          slug={post.slug}
-          full={1}
-          readtime={post.readtime}
-          image={post.image}
-          key={post.id}
-        />
-      ))}
-    </div>
-    <Me />
-    <Mytable repos={repos} />
-    <style jsx>{`
-      .hero-container {
-        max-width: 750px;
-        with: 100%;
-        margin-left: 10%;
-        float: left;
-      }
-      @media (max-width: 500px) {
+      <Uparea />
+      <div className='hero-container'>
+        {posts.map(post => (
+          <Blog
+            title={post.title}
+            content={post.content}
+            date={post.date}
+            slug={post.slug}
+            full={1}
+            readtime={post.readtime}
+            image={post.image}
+            key={post.id}
+          />
+        ))}
+      </div>
+      <Me />
+      <Mytable repos={repos} />
+      <style jsx>{`
         .hero-container {
-          margin-right: 10%;
+          max-width: 750px;
+          with: 100%;
+          margin-left: 10%;
+          float: left;
         }
-      }
-    `}</style>
-  </div>
+        @media (max-width: 500px) {
+          .hero-container {
+            margin-right: 10%;
+          }
+        }
+      `}</style>
+    </div>
+  </GoogleWrapper>
 );
 
 Home.getInitialProps = async ({ req }) => {
