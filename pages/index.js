@@ -6,7 +6,7 @@ import fetch from "isomorphic-unfetch";
 import Uparea from "../components/up";
 import Blog from "../components/blog";
 import Mytable from "../components/table";
-import { useContext } from "react";
+
 const Home = ({ posts, repos, pages }) => (
   <div>
     <Head>
@@ -47,13 +47,6 @@ const Home = ({ posts, repos, pages }) => (
     </div>
     <Me />
     <Mytable repos={repos} />
-    <button
-      onClick={() => {
-        pages++;
-      }}
-    >
-      {pages}
-    </button>
     <style jsx>{`
       .hero-container {
         max-width: 750px;

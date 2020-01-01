@@ -32,6 +32,7 @@ const BlogPost = ({ post, comment }) => (
       date={post.date}
       slug={post.slug}
       readtime={post.readtime}
+      image={post.image}
       comments={comment}
     />
 
