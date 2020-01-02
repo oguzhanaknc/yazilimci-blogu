@@ -6,14 +6,14 @@ export const getPosts = async full => {
   }
   return [
     {
-      title: "Loerm Ipsum Nedir ?",
+      title: "Bu Blog ve Özellikleri",
       id: 1,
       content: contentiki.default.substring(0, full),
       date: "08.12.1999",
       slug: "lorem-ipsum-nedir",
       readtime: readtime(contentiki),
       image:
-        "https://cdna.artstation.com/p/assets/images/images/007/323/062/large/alena-aenami-stay-1k.jpg?1505326688"
+        "https://cdna.artstation.com/p/assets/images/images/014/905/850/large/alena-aenami-witcher-1k.jpg?1546204748"
     },
     {
       title: "Sayfalama Test Yazısı 1",
