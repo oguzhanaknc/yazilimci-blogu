@@ -10,6 +10,7 @@ Bu blog sitesiniz ilk yazısına Selman Kahya hocama sonsuz teşekkürlerimi sun
 - Beni en çok uğraştıran sayfalama özelliğini ekledim. Aslında tam ekledimde sayılmaz. Yazıları sadece 3er 3er gösteriyorum.
 - Kendimi tanıttığım ufak bir kart ekledim.
 - Static olarak hakkımda sayfası ekledim.
+- Google Analytics ekledim.
 
 ## Ekleyeceğim Özellikler ve Değişiklikler
 
