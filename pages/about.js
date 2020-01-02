@@ -3,6 +3,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import GoogleWrapper from "../components/layout";
+import Paginator from "../components/paginator";
 const About = ({ posts }) => (
   <GoogleWrapper>
     <div className='hero-container'>
@@ -37,6 +38,7 @@ const About = ({ posts }) => (
           </Link>
         </div>
       </div>
+
       <style jsx>{`
         body {
           margin: 0 auto;

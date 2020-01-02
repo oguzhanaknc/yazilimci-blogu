@@ -1,4 +1,5 @@
 //blog ana sayfası
+// TODO SAYFALAMA İŞLEMİ YAPABİLMEK İÇİN REACT COMPONENTİ HALİNE GETİRDİM SAYFAYI
 import React, { useState } from "react";
 import Head from "next/head";
 import Me from "../components/me";
@@ -7,63 +8,117 @@ import Uparea from "../components/up";
 import Blog from "../components/blog";
 import Mytable from "../components/table";
 import GoogleWrapper from "../components/layout";
-const Home = ({ posts, repos, pages }) => (
-  <GoogleWrapper>
-    <div>
-      <Head>
-        <title>Oguzhan Akinci</title>
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
-          rel='stylesheet'
-        ></link>
-        <link
-          href='https://fonts.googleapis.com/css?family=Sacramento&display=swap'
-          rel='stylesheet'
-        ></link>
-        <link
-          href='https://fonts.googleapis.com/icon?family=Material+Icons'
-          rel='stylesheet'
-        ></link>
+import Paginator from "../components/paginator";
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: 1,
+      alt: 0,
+      ust: 3
+    };
+  }
+  // TODO SAYFALAMA İŞLEMİ YAPABİLMEK İÇİN REACT COMPONENTİ HALİNE GETİRDİM SAYFAYI
+  render() {
+    return (
+      <GoogleWrapper>
+        <div>
+          <Head>
+            <title>Oguzhan Akinci</title>
+            <link rel='icon' href='/favicon.ico' />
+            <link
+              href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
+              rel='stylesheet'
+            ></link>
+            <link
+              href='https://fonts.googleapis.com/css?family=Sacramento&display=swap'
+              rel='stylesheet'
+            ></link>
+            <link
+              href='https://fonts.googleapis.com/icon?family=Material+Icons'
+              rel='stylesheet'
+            ></link>
 
-        <link href='/static/materialize.min.css' rel='stylesheet' />
+            <link href='/static/materialize.min.css' rel='stylesheet' />
 
-        <style>{globalStyle}</style>
-      </Head>
+            <style>{globalStyle}</style>
+          </Head>
 
-      <Uparea />
-      <div className='hero-container'>
-        {posts.map(post => (
-          <Blog
-            title={post.title}
-            content={post.content}
-            date={post.date}
-            slug={post.slug}
-            full={1}
-            readtime={post.readtime}
-            image={post.image}
-            key={post.id}
-          />
-        ))}
-      </div>
-      <Me />
-      <Mytable repos={repos} />
-      <style jsx>{`
-        .hero-container {
-          max-width: 750px;
-          with: 100%;
-          margin-left: 10%;
-          float: left;
-        }
-        @media (max-width: 500px) {
-          .hero-container {
-            margin-right: 10%;
-          }
-        }
-      `}</style>
-    </div>
-  </GoogleWrapper>
-);
+          <Uparea />
+
+          <div className='hero-container'>
+            {this.props.posts
+              .slice(this.state.alt, this.state.ust)
+              .map(post => (
+                <Blog
+                  title={post.title}
+                  content={post.content}
+                  date={post.date}
+                  slug={post.slug}
+                  full={1}
+                  readtime={post.readtime}
+                  image={post.image}
+                  key={post.id}
+                />
+              ))}
+
+            {0 <= this.state.alt - 3 && (
+              <button
+                className='btn waves-effect waves-light'
+                onClick={() => {
+                  console.log(this.props.posts.length);
+
+                  this.setState({ alt: this.state.alt - 3 });
+                  this.setState({ ust: this.state.ust - 3 });
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+                }}
+              >
+                Önceki Sayfa
+              </button>
+            )}
+            {this.props.posts.length >= this.state.alt + 3 && (
+              <button
+                className='btn waves-effect waves-light'
+                onClick={() => {
+                  console.log(this.props.posts.length);
+
+                  this.setState({ alt: this.state.alt + 3 });
+
+                  this.setState({ ust: this.state.ust + 3 });
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+                }}
+              >
+                Sonraki Sayfa
+              </button>
+            )}
+          </div>
+
+          <Me />
+          <Mytable repos={this.props.repos} />
+          <style jsx>{`
+            .hero-container {
+              max-width: 750px;
+              with: 100%;
+              margin-left: 10%;
+              float: left;
+            }
+            @media (max-width: 500px) {
+              .hero-container {
+                margin-right: 100px;
+              }
+            }
+          `}</style>
+        </div>
+      </GoogleWrapper>
+    );
+  }
+}
 
 Home.getInitialProps = async ({ req }) => {
   //const res = await fetch("https://oguzhanaknc.herokuapp.com/api/posts");
@@ -71,10 +126,15 @@ Home.getInitialProps = async ({ req }) => {
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );
+
   const json = await res.json();
   const repoJson = await resforrepo.json();
   const pageCount = json.posts.length;
-  return { posts: json.posts, repos: repoJson.slice(0, 3), pages: pageCount };
+  return {
+    posts: json.posts,
+    repos: repoJson.slice(0, 3),
+    pages: pageCount
+  };
 };
 const globalStyle = `
 body {

@@ -16,8 +16,58 @@ export const getPosts = async full => {
         "https://cdna.artstation.com/p/assets/images/images/007/323/062/large/alena-aenami-stay-1k.jpg?1505326688"
     },
     {
-      title: "Loerm Ipsum Nedir ?",
+      title: "Sayfalama Test Yazısı 1",
       id: 2,
+      content: content.default.substring(0, full),
+      date: "08.12.1999",
+      slug: "lorem-ipsum-nedir-iki",
+      readtime: readtime(content),
+      image:
+        "https://cdnb.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg?1504395238"
+    },
+    {
+      title: "Sayfalama Test Yazısı 2",
+      id: 3,
+      content: content.default.substring(0, full),
+      date: "08.12.1999",
+      slug: "lorem-ipsum-nedir-iki",
+      readtime: readtime(content),
+      image:
+        "https://cdnb.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg?1504395238"
+    },
+    {
+      title: "Sayfalama Test Yazısı 3",
+      id: 4,
+      content: content.default.substring(0, full),
+      date: "08.12.1999",
+      slug: "lorem-ipsum-nedir-iki",
+      readtime: readtime(content),
+      image:
+        "https://cdnb.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg?1504395238"
+    },
+    {
+      title: "Sayfalama Test Yazısı 4",
+      id: 5,
+      content: content.default.substring(0, full),
+      date: "08.12.1999",
+      slug: "lorem-ipsum-nedir-iki",
+      readtime: readtime(content),
+      image:
+        "https://cdnb.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg?1504395238"
+    },
+    {
+      title: "Sayfalama Test Yazısı 5",
+      id: 6,
+      content: content.default.substring(0, full),
+      date: "08.12.1999",
+      slug: "lorem-ipsum-nedir-iki",
+      readtime: readtime(content),
+      image:
+        "https://cdnb.artstation.com/p/assets/images/images/007/198/563/large/alena-aenami-eclipse-1k.jpg?1504395238"
+    },
+    {
+      title: "Sayfalama Test Yazısı 6",
+      id: 7,
       content: content.default.substring(0, full),
       date: "08.12.1999",
       slug: "lorem-ipsum-nedir-iki",
