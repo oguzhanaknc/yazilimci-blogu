@@ -10,7 +10,7 @@ export const getPosts = async full => {
       id: 1,
       content: contentiki.default.substring(0, full),
       date: "08.12.1999",
-      slug: "lorem-ipsum-nedir",
+      slug: "bu-blog-ve-ozellikleri",
       readtime: readtime(contentiki),
       image:
         "https://cdna.artstation.com/p/assets/images/images/014/905/850/large/alena-aenami-witcher-1k.jpg?1546204748"
