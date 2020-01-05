@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import "firebase/storage";
+import "firebase/auth";
 var firebaseConfig = {
   apiKey: "AIzaSyAM_gGqUxk0-faWvJP4TKU7wEvNN-vIac4",
   authDomain: "oguzhanakinciblog.firebaseapp.com",
@@ -14,4 +14,5 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-export default firebase;
+const auth = firebase.auth();
+export { auth, firebase };

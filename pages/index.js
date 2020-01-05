@@ -8,7 +8,7 @@ import Uparea from "../components/up";
 import Blog from "../components/blog";
 import Mytable from "../components/table";
 import GoogleWrapper from "../components/layout";
-import firebase from "../components/firebase";
+import { firebase } from "../components/firebase";
 import readtime from "../components/minread";
 class Home extends React.Component {
   constructor(props) {
@@ -18,6 +18,15 @@ class Home extends React.Component {
       alt: 0,
       ust: 3
     };
+    firebase
+      .database()
+      .ref("/comments/")
+      .once("value")
+      .then(function(snapshot) {
+        if (snapshot.val()) {
+          console.log(snapshot.val().length - 1);
+        }
+      });
   }
 
   render() {

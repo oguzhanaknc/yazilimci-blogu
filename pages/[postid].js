@@ -4,9 +4,9 @@ import Head from "next/head";
 import Blog from "../components/blog";
 import Uparea from "../components/up";
 import GoogleWrapper from "../components/layout";
-import firebase from "../components/firebase";
+import { firebase } from "../components/firebase";
 import minread from "../components/minread";
-const BlogPost = ({ post, comments }) => (
+const BlogPost = ({ post, comments, count }) => (
   <GoogleWrapper>
     <div className='hero-container'>
       <Head>
@@ -37,6 +37,7 @@ const BlogPost = ({ post, comments }) => (
         readtime={minread(post.content)}
         image={post.image}
         comment={comments}
+        count={count}
       />
 
       <style jsx>{`
@@ -65,19 +66,24 @@ BlogPost.getInitialProps = async ({ req, query }) => {
         }
       });
     });
+  let count = 0;
   await firebase
     .database()
     .ref("/comments/")
     .once("value")
     .then(function(snapshot) {
-      snapshot.val().map(x => {
-        if (x.slug == query.postid) {
-          mineComments.push(x);
-        }
-      });
-    });
+      if (snapshot.val()) {
+        count += snapshot.val().length - 1;
+        for (let i = 0; i <= Object.keys(snapshot.val()).length + 1; i++) {
+          console.log(i);
 
-  return { post: mineText, comments: mineComments };
+          if (snapshot.val()[i] && snapshot.val()[i].slug == query.postid) {
+            mineComments.push(snapshot.val()[i]);
+          }
+        }
+      }
+    });
+  return { post: mineText, comments: mineComments, count: count };
 };
 const globalStyle = `
 body {

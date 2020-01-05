@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { BrowserView } from "react-device-detect";
 import Commentarea from "./comment";
 import CommentSarea from "./comments";
 const Blog = props => (
@@ -23,7 +22,7 @@ const Blog = props => (
       {props.full != 1 && (
         <div>
           <CommentSarea data={props.comment} />
-          <Commentarea id={props.comment.length + 1} slug={props.slug} />
+          <Commentarea id={props.count + 1} slug={props.slug} />
         </div>
       )}
 

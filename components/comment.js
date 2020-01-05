@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../components/firebase";
+import { firebase } from "../components/firebase";
 class Commentarea extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +8,7 @@ class Commentarea extends React.Component {
       comment: ""
     };
   }
+
   render() {
     return (
       <div>
