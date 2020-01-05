@@ -4,7 +4,9 @@ import Head from "next/head";
 import Blog from "../components/blog";
 import Uparea from "../components/up";
 import GoogleWrapper from "../components/layout";
-const BlogPost = ({ post, comment }) => (
+import firebase from "../components/firebase";
+import minread from "../components/minread";
+const BlogPost = ({ post, comments }) => (
   <GoogleWrapper>
     <div className='hero-container'>
       <Head>
@@ -32,9 +34,9 @@ const BlogPost = ({ post, comment }) => (
         content={post.content}
         date={post.date}
         slug={post.slug}
-        readtime={post.readtime}
+        readtime={minread(post.content)}
         image={post.image}
-        comments={comment}
+        comment={comments}
       />
 
       <style jsx>{`
@@ -48,13 +50,34 @@ const BlogPost = ({ post, comment }) => (
   </GoogleWrapper>
 );
 BlogPost.getInitialProps = async ({ req, query }) => {
-  /* const res = await fetch(
-    `https://oguzhanaknc.herokuapp.com/api/post/${query.postid}`
-  );*/
-  const res = await fetch(process.env.URL + `/api/post/${query.postid}`);
-  const json = await res.json();
+  let f = "_n";
+  let mineText;
+  let mineComments = [];
+  await firebase
+    .database()
+    .ref("/blogs/")
+    .once("value")
+    .then(function(snapshot) {
+      snapshot.val().map(x => {
+        if (x.slug == query.postid) {
+          x.content = x.content.split(f).join("\n");
+          mineText = x;
+        }
+      });
+    });
+  await firebase
+    .database()
+    .ref("/comments/")
+    .once("value")
+    .then(function(snapshot) {
+      snapshot.val().map(x => {
+        if (x.slug == query.postid) {
+          mineComments.push(x);
+        }
+      });
+    });
 
-  return { post: json.post, comment: json.comment };
+  return { post: mineText, comments: mineComments };
 };
 const globalStyle = `
 body {

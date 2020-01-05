@@ -8,7 +8,8 @@ import Uparea from "../components/up";
 import Blog from "../components/blog";
 import Mytable from "../components/table";
 import GoogleWrapper from "../components/layout";
-import Paginator from "../components/paginator";
+import firebase from "../components/firebase";
+import readtime from "../components/minread";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class Home extends React.Component {
       ust: 3
     };
   }
-  // TODO SAYFALAMA İŞLEMİ YAPABİLMEK İÇİN REACT COMPONENTİ HALİNE GETİRDİM SAYFAYI
+
   render() {
     return (
       <GoogleWrapper>
@@ -52,11 +53,11 @@ class Home extends React.Component {
               .map(post => (
                 <Blog
                   title={post.title}
-                  content={post.content}
+                  content={post.content.substring(0, 450) + "..."}
                   date={post.date}
                   slug={post.slug}
                   full={1}
-                  readtime={post.readtime}
+                  readtime={readtime(post.content)}
                   image={post.image}
                   key={post.id}
                 />
@@ -121,17 +122,26 @@ class Home extends React.Component {
 }
 
 Home.getInitialProps = async ({ req }) => {
-  //const res = await fetch("https://oguzhanaknc.herokuapp.com/api/posts");
-  const res = await fetch(process.env.URL + "/api/posts");
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );
+  let posts = [];
+  let f = "_n";
+  await firebase
+    .database()
+    .ref("/blogs/")
+    .once("value")
+    .then(function(snapshot) {
+      snapshot.val().map(x => {
+        x.content = x.content.split(f).join("\n");
+        posts.push(x);
+      });
+    });
 
-  const json = await res.json();
   const repoJson = await resforrepo.json();
-  const pageCount = json.posts.length;
+  const pageCount = posts.length;
   return {
-    posts: json.posts,
+    posts: posts,
     repos: repoJson.slice(0, 3),
     pages: pageCount
   };

@@ -6,12 +6,14 @@ const CommentSarea = props => (
     <hr />
     <div className='hero'>
       <h5 className='comment-title'>Yorumlar</h5>
-      <div className='comment-show-area'>
-        <h6 className='comment-author'>Selman Kayha</h6>
-        <p className='comment-comment'>
-          "Gerçekten Harika Bir Blog Olmuş Büyük Ödül Senin"
-        </p>
-      </div>
+      {props.data &&
+        props.data.map(comment => (
+          <div className='comment-show-area'>
+            <h6 className='comment-author'>{comment.author}</h6>
+            <p className='comment-comment'>{comment.comment}</p>
+          </div>
+        ))}
+      {!props.data && <p>Hiç Yorum Yok İlk Yorum Yapan Sen Ol</p>}
     </div>
 
     <style jsx>{`

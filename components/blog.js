@@ -22,8 +22,8 @@ const Blog = props => (
       </div>
       {props.full != 1 && (
         <div>
-          <CommentSarea />
-          <Commentarea />
+          <CommentSarea data={props.comment} />
+          <Commentarea id={props.comment.length + 1} slug={props.slug} />
         </div>
       )}
 

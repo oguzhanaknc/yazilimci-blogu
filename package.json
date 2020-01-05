@@ -17,7 +17,7 @@
     "baseui": "^9.27.0",
     "dotenv": "^8.2.0",
     "dotenv-flow": "^3.1.0",
-    "firebase": "^7.5.2",
+    "firebase": "^7.6.1",
     "isomorphic-unfetch": "^3.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "next": "9.1.4",
