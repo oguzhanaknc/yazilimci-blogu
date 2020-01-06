@@ -18,15 +18,6 @@ class Home extends React.Component {
       alt: 0,
       ust: 3
     };
-    firebase
-      .database()
-      .ref("/comments/")
-      .once("value")
-      .then(function(snapshot) {
-        if (snapshot.val()) {
-          console.log(snapshot.val().length - 1);
-        }
-      });
   }
 
   render() {

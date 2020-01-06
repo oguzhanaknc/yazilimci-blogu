@@ -5,14 +5,19 @@ class CommentSarea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      admin: ""
+      user: null
     };
+    this.authListener = this.authListener.bind(this);
+    this.authListener();
   }
-  componentDidMount() {
-    this.setState({ admin: this.getitem() });
-  }
-  getitem() {
-    return localStorage.getItem("uid");
+  authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user: user });
+      } else {
+        this.setState({ user: null });
+      }
+    });
   }
   async deleteComment(comment) {
     await firebase
@@ -52,7 +57,7 @@ class CommentSarea extends React.Component {
               <div className='comment-show-area'>
                 <h6 className='comment-author'>{comment.author}</h6>
                 <p className='comment-comment'>{comment.comment}</p>
-                {this.state.admin && (
+                {this.state.user && (
                   <button
                     onClick={() => {
                       this.deleteComment(comment);

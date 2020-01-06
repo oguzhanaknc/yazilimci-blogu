@@ -1,45 +1,59 @@
 import React from "react";
 import { firebase, auth } from "../components/firebase";
-
+let a;
 class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uid: ""
+      name: "",
+      pass: "",
+      user: null
     };
+    this.authListener = this.authListener.bind(this);
+    this.authListener();
   }
-  componentDidMount() {
-    if (localStorage.getItem("uid") == undefined) {
-      localStorage.setItem("uid", "");
-    }
-    this.setState({ uid: this.getdata() });
+
+  authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user: user });
+      } else {
+        this.setState({ user: null });
+      }
+    });
   }
-  getdata() {
-    return localStorage.getItem("uid");
-  }
-  setdata(value) {
-    localStorage.setItem("uid", value);
-    this.setState({ uid: value });
-    window.location.replace("/");
-  }
+
   render() {
     return (
       <>
-        {this.state.uid == "" && (
+        {!this.state.user && (
           <div>
-            <textarea>isim</textarea>
-            <textarea>şifre</textarea>
+            <input
+              type='text'
+              placeholder='isim'
+              onChange={e => {
+                this.setState({ name: e.target.value });
+              }}
+            ></input>
+            <input
+              type='password'
+              placeholder='password'
+              onChange={e => {
+                this.setState({ pass: e.target.value });
+              }}
+            ></input>
+
             <button
               onClick={() => {
                 firebase
                   .auth()
-                  .signInWithEmailAndPassword(
-                    "oguzhanaknc06@gmail.com",
-                    "RaiderSys06"
-                  )
+                  .signInWithEmailAndPassword(this.state.name, this.state.pass)
+                  .catch(e => {
+                    console.log(e);
+                  })
                   .then(x => {
                     if (x) {
-                      this.setdata(x.user.uid);
+                      this.setState({ user: x });
                     }
                   });
               }}
@@ -48,9 +62,23 @@ class Admin extends React.Component {
             </button>
           </div>
         )}
-        {this.state.uid != "" && <div>Hoşgeldin Oğuzhan</div>}
+        {this.state.user && (
+          <div>
+            <p>selam oğuzhan</p>
+            <button
+              onClick={() => {
+                firebase.auth().signOut();
+
+                window.location.reload();
+              }}
+            >
+              Çıkış Yap
+            </button>
+          </div>
+        )}
       </>
     );
   }
 }
+
 export default Admin;
