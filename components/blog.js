@@ -36,6 +36,12 @@ const Blog = props => (
     </div>
 
     <style jsx>{`
+      @font-face {
+        font-family: "Montserrat";
+        src: url("../static/fonts/Montserrat-Regular.ttf");
+        font-style: normal;
+        font-display: swap;
+      }
       ul {
         list-style: none outside none;
       }

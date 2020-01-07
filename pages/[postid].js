@@ -10,22 +10,10 @@ const BlogPost = ({ post, comments, count }) => (
   <GoogleWrapper>
     <div className='hero-container'>
       <Head>
-        <title>{post.title}</title>
         <link rel='icon' href='/favicon.ico' />
         <style>{globalStyle}</style>
-        <link
-          href='https://fonts.googleapis.com/css?family=Sacramento&display=swap'
-          rel='stylesheet'
-        ></link>
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'
-        ></link>
-        <link
-          href='https://fonts.googleapis.com/icon?family=Material+Icons'
-          rel='stylesheet'
-        ></link>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+
+        <link href='/static/materialize.min.css' rel='stylesheet' />
       </Head>
 
       <Uparea />
@@ -75,8 +63,6 @@ BlogPost.getInitialProps = async ({ req, query }) => {
       if (snapshot.val()) {
         count += snapshot.val().length - 1;
         for (let i = 0; i <= Object.keys(snapshot.val()).length + 1; i++) {
-          console.log(i);
-
           if (snapshot.val()[i] && snapshot.val()[i].slug == query.postid) {
             mineComments.push(snapshot.val()[i]);
           }
@@ -87,7 +73,7 @@ BlogPost.getInitialProps = async ({ req, query }) => {
 };
 const globalStyle = `
 body {
-  background: url('https://i.hizliresim.com/mX9n9R.png');
+  background: url('../static/images/mX9n9R.webp');
 }
 `;
 

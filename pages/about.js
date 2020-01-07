@@ -10,15 +10,12 @@ const About = ({ posts }) => (
       <Head>
         <title>Hakkımda</title>
         <link rel='icon' href='/favicon.ico' />
-        <link
-          href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
-          rel='stylesheet'
-        ></link>
+
         <style>{globalStyle}</style>
       </Head>
       <div id='gradient'></div>
       <div id='card'>
-        <img src='https://www.kisa.link/Mvr6' />
+        <img src='../static/images/PP.jpeg' />
         <h2>Oğuzhan Akıncı</h2>
         <p>Karadeniz Teknik Üniversitesi Öğrencisi</p>
         <p>

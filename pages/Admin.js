@@ -49,7 +49,7 @@ class Admin extends React.Component {
                   .auth()
                   .signInWithEmailAndPassword(this.state.name, this.state.pass)
                   .catch(e => {
-                    console.log(e);
+                    // TODO: hatalı giriş durumlarını ekrana bastır !
                   })
                   .then(x => {
                     if (x) {

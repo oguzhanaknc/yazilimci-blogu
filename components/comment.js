@@ -11,13 +11,13 @@ class Commentarea extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <hr />
-        <div className='hero'>
+        <div key='0' className='hero'>
           <div>Yorum Yap</div>
           <br />
-          <div className='input-field col s6'>
-            <div className='input-field col s12'>
+          <div key='1' className='input-field col s6'>
+            <div key='2' className='input-field col s12'>
               <textarea
                 id='2'
                 className='materialize-textarea'
@@ -26,9 +26,9 @@ class Commentarea extends React.Component {
                   this.setState({ author: e.target.value });
                 }}
               ></textarea>
-              <label for='2'>Adınız</label>
+              <label htmlFor='2'>Adınız</label>
             </div>
-            <div className='input-field col s12'>
+            <div key='5' className='input-field col s12'>
               <textarea
                 id='2'
                 className='materialize-textarea'
@@ -37,7 +37,7 @@ class Commentarea extends React.Component {
                   this.setState({ comment: e.target.value });
                 }}
               ></textarea>
-              <label for='1'>Yorumunuz</label>
+              <label htmlFor='1'>Yorumunuz</label>
             </div>
             <button
               className='btn waves-effect waves-light'
@@ -58,16 +58,28 @@ class Commentarea extends React.Component {
               }}
             >
               Gönder
-              <i className='material-icons right'>send</i>
+              <i className='icon'>send</i>
             </button>
           </div>
         </div>
         <hr />
         <style jsx>{`
+          @font-face {
+            font-family: "Montserrat";
+            src: url("../static/fonts/Montserrat-Regular.ttf");
+            font-style: normal;
+            font-display: swap;
+          }
           .hero {
             text-align: center;
             font-family: "Montserrat", sans-serif;
             margin: 10px 0 10px 0;
+          }
+          .icon {
+            background: url("../static/icons/send.svg");
+            height: 20px;
+            width: 20px;
+            display: block;
           }
           .comment-button {
             margin-top: 50px;
@@ -111,7 +123,7 @@ class Commentarea extends React.Component {
             padding: var(--inputPaddingV) var(--inputPaddingH);
           }
         `}</style>
-      </div>
+      </>
     );
   }
 }

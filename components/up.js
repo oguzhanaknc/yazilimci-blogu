@@ -35,6 +35,18 @@ const Uparea = () => (
     </div>
 
     <style jsx>{`
+      @font-face {
+        font-family: "Open Sans";
+        src: url("../static/fonts/OpenSans-Regular.ttf");
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Sacramento";
+        src: url("../static/fonts/Sacramento-Regular.ttf");
+        font-style: normal;
+        font-display: swap;
+      }
       .colorm {
         background: #fff;
       }

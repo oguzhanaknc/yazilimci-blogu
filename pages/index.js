@@ -27,18 +27,6 @@ class Home extends React.Component {
           <Head>
             <title>Oguzhan Akinci</title>
             <link rel='icon' href='/favicon.ico' />
-            <link
-              href='https://fonts.googleapis.com/css?family=Baskervville|Montserrat|Open+Sans&display=swap'
-              rel='stylesheet'
-            ></link>
-            <link
-              href='https://fonts.googleapis.com/css?family=Sacramento&display=swap'
-              rel='stylesheet'
-            ></link>
-            <link
-              href='https://fonts.googleapis.com/icon?family=Material+Icons'
-              rel='stylesheet'
-            ></link>
 
             <link href='/static/materialize.min.css' rel='stylesheet' />
 
@@ -67,8 +55,6 @@ class Home extends React.Component {
               <button
                 className='btn waves-effect waves-light'
                 onClick={() => {
-                  console.log(this.props.posts.length);
-
                   this.setState({ alt: this.state.alt - 3 });
                   this.setState({ ust: this.state.ust - 3 });
                   window.scrollTo({
@@ -84,8 +70,6 @@ class Home extends React.Component {
               <button
                 className='btn waves-effect waves-light'
                 onClick={() => {
-                  console.log(this.props.posts.length);
-
                   this.setState({ alt: this.state.alt + 3 });
 
                   this.setState({ ust: this.state.ust + 3 });
@@ -111,7 +95,7 @@ class Home extends React.Component {
             }
             @media (max-width: 500px) {
               .hero-container {
-                margin-right: 100px;
+                margin-right: 10%;
               }
             }
           `}</style>
