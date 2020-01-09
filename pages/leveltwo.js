@@ -1,7 +1,8 @@
 import React from "react";
-import { firebase, auth } from "../components/firebase";
+import { firebase } from "../components/firebase";
+import Adminpanel from "../components/adminwrapper";
 let a;
-class Admin extends React.Component {
+export default class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,6 +29,7 @@ class Admin extends React.Component {
       <>
         {!this.state.user && (
           <div>
+            <link href='/static/materialize.min.css' rel='stylesheet' />
             <input
               type='text'
               placeholder='isim'
@@ -44,6 +46,7 @@ class Admin extends React.Component {
             ></input>
 
             <button
+              className='waves-effect waves-light btn'
               onClick={() => {
                 firebase
                   .auth()
@@ -64,21 +67,10 @@ class Admin extends React.Component {
         )}
         {this.state.user && (
           <div>
-            <p>selam oğuzhan</p>
-            <button
-              onClick={() => {
-                firebase.auth().signOut();
-
-                window.location.reload();
-              }}
-            >
-              Çıkış Yap
-            </button>
+            <Adminpanel />
           </div>
         )}
       </>
     );
   }
 }
-
-export default Admin;

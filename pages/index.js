@@ -19,7 +19,9 @@ class Home extends React.Component {
       ust: 3
     };
   }
-
+  componentDidMount() {
+    localStorage.setItem("c", this.props.posts.length);
+  }
   render() {
     return (
       <GoogleWrapper>
@@ -121,7 +123,7 @@ Home.getInitialProps = async ({ req }) => {
         posts.push(x);
       });
     });
-
+  posts = posts.reverse();
   const repoJson = await resforrepo.json();
   const pageCount = posts.length;
   return {
