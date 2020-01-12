@@ -86,7 +86,7 @@ class Home extends React.Component {
             )}
           </div>
 
-          <Me />
+          <Me status={this.props.status} />
           <Mytable repos={this.props.repos} />
           <style jsx>{`
             .hero-container {
@@ -113,6 +113,14 @@ Home.getInitialProps = async ({ req }) => {
   );
   let posts = [];
   let f = "_n";
+  let status;
+  firebase
+    .database()
+    .ref("/Me/")
+    .once("value")
+    .then(function(snapshot) {
+      status = snapshot.val();
+    });
   await firebase
     .database()
     .ref("/blogs/")
@@ -129,7 +137,8 @@ Home.getInitialProps = async ({ req }) => {
   return {
     posts: posts,
     repos: repoJson.slice(0, 3),
-    pages: pageCount
+    pages: pageCount,
+    status: status
   };
 };
 const globalStyle = `

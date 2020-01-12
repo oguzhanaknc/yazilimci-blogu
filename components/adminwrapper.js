@@ -20,9 +20,12 @@ class Adminpanel extends React.Component {
       selectedTab: "write",
       title: "",
       slug: "",
-      image: ""
+      image: "",
+      status: ""
     };
+    this.getStatus = this.getStatus.bind(this);
     this.createPost = this.createPost.bind(this);
+    this.getStatus();
   }
 
   async createPost() {
@@ -44,6 +47,28 @@ class Adminpanel extends React.Component {
     this.setState({ title: "", image: "", slug: "", value: "" });
   }
 
+  async getStatus() {
+    let status;
+    await firebase
+      .database()
+      .ref("/Me/")
+      .once("value")
+      .then(function(snapshot) {
+        status = snapshot.val().status;
+      });
+    console.log(status);
+
+    this.setState({ status: status });
+  }
+  async setStatus(e) {
+    await firebase
+      .database()
+      .ref("Me/")
+      .set({
+        status: e.target.value
+      })
+      .then(this.setState({ status: e.target.value }));
+  }
   render() {
     return (
       <div>
@@ -166,7 +191,16 @@ class Adminpanel extends React.Component {
             </tbody>
           </table>
         </div>
+        <div className='comment-area'>
+          <h6>Durum Bilgisi</h6>
 
+          <input
+            placeholder={this.state.status}
+            onChange={e => {
+              this.setStatus(e);
+            }}
+          ></input>
+        </div>
         <style jsx>{`
           .baslik-text {
             padding-left: 245px;

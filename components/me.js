@@ -6,7 +6,7 @@ import {
   isMobile
 } from "react-device-detect";
 
-const Me = () => (
+const Me = props => (
   <div>
     <BrowserView>
       <div className='card-wrapper'>
@@ -17,9 +17,12 @@ const Me = () => (
           </div>
           <div className='card-content'>
             <p>
-              Ben Oğuzhan Akıncı. Karadeniz Teknik Üniversitesi İstatistik ve
-              Bilgisayar Bilimleri 3.Sınıf Öğrencisiyim. Javascript dili ile
-              yazılım geliştirme konusunda hevesli bir yazılımcı adayıyım.
+              <p>
+                {" "}
+                Son Durum : <a className='status'> {props.status.status}</a>
+              </p>
+              <hr />
+              {props.status.detail}
             </p>
           </div>
         </div>
@@ -31,6 +34,26 @@ const Me = () => (
         margin-left: 70%;
         margin-top: 20px;
         height: 20px;
+      }
+      .status {
+        animation: blinkingText 0.8s infinite;
+      }
+      @keyframes blinkingText {
+        0% {
+          color: #ff0000;
+        }
+        49% {
+          color: #ff1919;
+        }
+        50% {
+          color: #ff3232;
+        }
+        99% {
+          color: transparent;
+        }
+        100% {
+          color: #ff0000;
+        }
       }
     `}</style>
   </div>

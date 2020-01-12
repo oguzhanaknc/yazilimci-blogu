@@ -30,7 +30,7 @@ const Mytable = ({ repos }) => (
         .card-wrapper {
           max-width: 260px;
           margin-left: 70%;
-          margin-top: 32%;
+          margin-top: 36%;
           height: 20px;
           text-align: center;
         }
