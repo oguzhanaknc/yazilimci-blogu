@@ -1,7 +1,7 @@
 import React from "react";
-import { firebase, auth } from "../components/firebase";
+import { firebase } from "../components/firebase";
 import ReactMde from "react-mde";
-
+import * as server from "../server/firebaseFunction";
 import * as Showdown from "showdown";
 
 const converter = new Showdown.Converter({
@@ -21,54 +21,75 @@ class Adminpanel extends React.Component {
       title: "",
       slug: "",
       image: "",
-      status: ""
+      status: "",
+      drafts: "",
+      detail: "",
+      posts: ""
     };
     this.getStatus = this.getStatus.bind(this);
     this.createPost = this.createPost.bind(this);
+    this.draftPost = this.draftPost.bind(this);
+    this.getDraft = this.getDraft.bind(this);
+    this.setDetail = this.setDetail.bind(this);
     this.getStatus();
   }
 
   async createPost() {
-    let d = new Date();
-    await firebase
-      .database()
-      .ref("blogs/" + (parseInt(localStorage.getItem("c")) + parseInt(1)))
-      .set({
-        title: this.state.title,
-        content: this.state.value,
-        slug: this.state.slug,
-        image: this.state.image,
-        date: d.getDay() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
-      })
-      .then(() => {
-        window.location.reload();
-      });
+    let target = {
+      title: this.state.title,
+      content: this.state.value,
+      slug: this.state.slug,
+      image: this.state.image
+    };
+    await server.setPost(target).then(() => {
+      window.alert("yazı başarıyla paylaşıldı");
+    });
 
     this.setState({ title: "", image: "", slug: "", value: "" });
   }
-
-  async getStatus() {
-    let status;
-    await firebase
-      .database()
-      .ref("/Me/")
-      .once("value")
-      .then(function(snapshot) {
-        status = snapshot.val().status;
-      });
-    console.log(status);
-
-    this.setState({ status: status });
+  async draftPost() {
+    let target = {
+      title: this.state.title,
+      content: this.state.value,
+      slug: this.state.slug,
+      image: this.state.image
+    };
+    await server.setDraft(target).then(() => {
+      window.alert("yazı taslak olarak kayıt edildi");
+    });
+    this.setState({ title: "", image: "", slug: "", value: "" });
   }
+  async getStatus() {
+    let posts = await server.getBlogs();
+    let status = await server.getStatus();
+    this.setState({
+      status: status.status,
+      detail: status.detail,
+      posts: posts
+    });
+  }
+
   async setStatus(e) {
-    await firebase
-      .database()
-      .ref("Me/")
-      .set({
-        status: e.target.value
-      })
+    await server
+      .setStatus(e.target.value, this.state.detail)
       .then(this.setState({ status: e.target.value }));
   }
+  async setDetail(e) {
+    await server
+      .setDetail(e.target.value, this.state.status)
+      .then(this.setState({ detail: e.target.value }));
+  }
+  async getDraft() {
+    let draft = await server.getDrafts();
+
+    this.setState({
+      title: draft.snap[draft.id].title,
+      image: draft.snap[draft.id].image,
+      slug: draft.snap[draft.id].slug,
+      value: draft.snap[draft.id].content
+    });
+  }
+
   render() {
     return (
       <div>
@@ -103,24 +124,27 @@ class Adminpanel extends React.Component {
           </ul>
         </div>
 
-        <div className='text-area'>
-          <h4 className='baslik-text'>Yazı Ekle</h4>
+        <div className='add-text-area'>
+          <a className='add-text-area-title'>Yazı Ekle</a>
           <hr />
           <input
+            value={this.state.title}
             onChange={e => {
               this.setState({ title: e.target.value });
             }}
-            className='baslik'
+            className='title'
             placeholder='Başlık'
           ></input>
           <input
             onChange={e => {
               this.setState({ image: e.target.value });
             }}
+            value={this.state.image}
             className='baslik'
             placeholder='Resim Linki'
           ></input>
           <input
+            value={this.state.slug}
             onChange={e => {
               this.setState({ slug: e.target.value });
             }}
@@ -143,85 +167,67 @@ class Adminpanel extends React.Component {
               Promise.resolve(converter.makeHtml(markdown))
             }
           />
-          <button
-            className='waves-effect waves-light btn ortala'
-            onClick={this.createPost}
-          >
-            Gönder
-          </button>
+          <div className='centered'>
+            <button
+              className='waves-effect waves-light btn '
+              onClick={this.getDraft}
+            >
+              Son taslağı getir
+            </button>
+            <button
+              className='waves-effect waves-light btn'
+              onClick={this.createPost}
+            >
+              Gönder
+            </button>
+            <button
+              className='waves-effect waves-light btn '
+              onClick={this.draftPost}
+            >
+              Taslak Olarak Ekle
+            </button>
+          </div>
         </div>
-        <div className='comment-area'>
-          <h4 className='baslik-text'>Yorumlar</h4>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Yazı</th>
-                <th>Yazar</th>
-                <th>yorum</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Alan</td>
-                <td>Jellybean</td>
-                <td>$3.76</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className='comment-area'>
-          <h4 className='baslik-text'>Yazılar</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>Başlık</th>
-                <th>İçerik</th>
-                <th>Tarih</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Alvin</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className='comment-area'>
-          <h6>Durum Bilgisi</h6>
+        <div className='little-areas'>
+          <a className='little-areas-title'>Durum Bilgisi</a>
 
           <input
-            placeholder={this.state.status}
+            value={this.state.status}
             onChange={e => {
               this.setStatus(e);
             }}
           ></input>
         </div>
+        <div className='little-areas'>
+          <a className='little-areas-title'>Detay Bilgisi</a>
+
+          <textarea
+            id='textarea1'
+            className='materialize-textarea detail-area'
+            value={this.state.detail}
+            onChange={this.setDetail}
+          ></textarea>
+        </div>
+
         <style jsx>{`
-          .baslik-text {
-            padding-left: 245px;
-            color: Red;
+          button {
+            margin-top: 2px;
+            width: 100%;
           }
-          .slug {
-            width: 20%;
-            margin: 10px;
-            margin-left: 150px !important;
-            font-size: 10px;
+          .add-text-area-title {
+            color: #0277bd;
+            font-size: 3.5vw;
+            margin-left: 17.5vw;
           }
-          .ortala {
-            margin-left: 295px !important;
-            margin: 10px;
+          .little-areas-title {
+            color: #c62828;
+            font-size: 2.5vw;
+            margin-left: 15vw;
           }
-          .baslik {
-            width: 50%;
-            margin: 10px;
-            font-size: 20px;
+          .detail-area {
+            height: 120px;
           }
-          .text-area {
+          .add-text-area {
             border-style: solid;
             border-width: 2px;
             margin-top: 10px;
@@ -229,29 +235,25 @@ class Adminpanel extends React.Component {
             width: 50%;
             float: left;
           }
-          .comment-area {
+          .little-areas {
             border-style: solid;
             border-width: 2px;
             margin-top: 10px;
-            margin-right: 20px;
+            margin-left: 54%;
             width: 45%;
-            float: right;
           }
           .header {
             width: %100;
             height: 50px;
-            color: #000;
-            background-color: #000;
+            background-color: #00796b;
           }
-          .cikis {
-            margin-left: 750px;
-          }
+
           a {
             margin-top: 50px;
             color: #fff;
           }
           a:hover {
-            color: #f6f6;
+            color: #000;
           }
           ul {
             padding-top: 15px;

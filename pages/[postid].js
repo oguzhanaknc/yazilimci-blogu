@@ -4,7 +4,7 @@ import Head from "next/head";
 import Blog from "../components/blog";
 import Uparea from "../components/up";
 import GoogleWrapper from "../components/layout";
-import { firebase } from "../components/firebase";
+import * as firebase from "../server/firebaseFunction";
 import minread from "../components/minread";
 const BlogPost = ({ post, comments, count }) => (
   <GoogleWrapper>
@@ -39,37 +39,9 @@ const BlogPost = ({ post, comments, count }) => (
   </GoogleWrapper>
 );
 BlogPost.getInitialProps = async ({ req, query }) => {
-  let f = "_n";
-  let mineText;
-  let mineComments = [];
-  await firebase
-    .database()
-    .ref("/blogs/")
-    .once("value")
-    .then(function(snapshot) {
-      snapshot.val().map(x => {
-        if (x.slug == query.postid) {
-          x.content = x.content.split(f).join("\n");
-          mineText = x;
-        }
-      });
-    });
-  let count = 0;
-  await firebase
-    .database()
-    .ref("/comments/")
-    .once("value")
-    .then(function(snapshot) {
-      if (snapshot.val()) {
-        count += snapshot.val().length - 1;
-        for (let i = 0; i <= Object.keys(snapshot.val()).length + 1; i++) {
-          if (snapshot.val()[i] && snapshot.val()[i].slug == query.postid) {
-            mineComments.push(snapshot.val()[i]);
-          }
-        }
-      }
-    });
-  return { post: mineText, comments: mineComments, count: count };
+  let post = await firebase.getBlog(query.postid);
+  let com = await firebase.getComments(query.postid);
+  return { post: post, comments: com.comments, count: com.count };
 };
 const globalStyle = `
 body {

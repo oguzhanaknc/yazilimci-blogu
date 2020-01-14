@@ -8,7 +8,7 @@ import Uparea from "../components/up";
 import Blog from "../components/blog";
 import Mytable from "../components/table";
 import GoogleWrapper from "../components/layout";
-import { firebase } from "../components/firebase";
+import * as firebase from "../server/firebaseFunction";
 import readtime from "../components/minread";
 class Home extends React.Component {
   constructor(props) {
@@ -111,26 +111,8 @@ Home.getInitialProps = async ({ req }) => {
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );
-  let posts = [];
-  let f = "_n";
-  let status;
-  firebase
-    .database()
-    .ref("/Me/")
-    .once("value")
-    .then(function(snapshot) {
-      status = snapshot.val();
-    });
-  await firebase
-    .database()
-    .ref("/blogs/")
-    .once("value")
-    .then(function(snapshot) {
-      snapshot.val().map(x => {
-        x.content = x.content.split(f).join("\n");
-        posts.push(x);
-      });
-    });
+  let posts = await firebase.getBlogs();
+  let status = await firebase.getStatus();
   posts = posts.reverse();
   const repoJson = await resforrepo.json();
   const pageCount = posts.length;

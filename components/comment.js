@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { firebase } from "../components/firebase";
+import * as firebase from "../server/firebaseFunction";
 class Commentarea extends React.Component {
   constructor(props) {
     super(props);
@@ -22,39 +22,34 @@ class Commentarea extends React.Component {
                 id='2'
                 className='materialize-textarea'
                 data-length='120'
+                placeholder='Adınız'
                 onChange={e => {
                   this.setState({ author: e.target.value });
                 }}
               ></textarea>
-              <label htmlFor='2'>Adınız</label>
             </div>
             <div key='5' className='input-field col s12'>
               <textarea
                 id='2'
                 className='materialize-textarea'
                 data-length='120'
+                placeholder='Yorumunuz'
                 onChange={e => {
                   this.setState({ comment: e.target.value });
                 }}
               ></textarea>
-              <label htmlFor='1'>Yorumunuz</label>
             </div>
             <button
               className='btn waves-effect waves-light'
               type='submit'
               name='action'
               onClick={() => {
-                firebase
-                  .database()
-                  .ref("comments/" + this.props.id)
-                  .set({
-                    author: this.state.author,
-                    comment: this.state.comment,
-                    slug: this.props.slug
-                  })
-                  .then(() => {
-                    window.location.reload();
-                  });
+                let state = {
+                  author: this.state.author,
+                  comment: this.state.comment,
+                  slug: this.props.slug
+                };
+                firebase.setCommet(state, this.props.id, this.props.slug);
               }}
             >
               Gönder

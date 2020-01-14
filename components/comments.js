@@ -1,6 +1,6 @@
 import React from "react";
 import { firebase } from "../components/firebase";
-import { database } from "firebase";
+import * as server from "../server/firebaseFunction";
 class CommentSarea extends React.Component {
   constructor(props) {
     super(props);
@@ -19,33 +19,7 @@ class CommentSarea extends React.Component {
       }
     });
   }
-  async deleteComment(comment) {
-    await firebase
-      .database()
-      .ref("/comments/")
-      .once("value")
-      .then(function(snapshot) {
-        if (snapshot.val()) {
-          for (let i = 0; i <= Object.keys(snapshot.val() + 1).length; i++) {
-            if (
-              snapshot.val()[i] &&
-              snapshot.val()[i].author == comment.author &&
-              snapshot.val()[i].comment == comment.comment
-            ) {
-              database()
-                .ref("comments/" + i)
-                .remove();
-              window.location.reload();
-            }
-          }
-        }
-      });
-    /* await firebase
-      .database()
-      .ref("comments/" + i)
-      .remove();
-    window.location.reload();*/
-  }
+
   render() {
     return (
       <div>
@@ -60,7 +34,7 @@ class CommentSarea extends React.Component {
                 {this.state.user && (
                   <button
                     onClick={() => {
-                      this.deleteComment(comment);
+                      server.deleteComment(comment);
                     }}
                   >
                     Yorumu Sil
