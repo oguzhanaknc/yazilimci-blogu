@@ -1,27 +1,23 @@
-import { createSitemap, EnumChangefreq } from "sitemap";
-import * as firebase from "../server/firebaseFunction";
+import * as firebase from "../../server/firebaseFunction";
 
-const Sitemap = () => null;
-Sitemap.getInitialProps = async ({ res }) => {
+import { createSitemap, EnumChangefreq } from "sitemap";
+
+export default async (req, res) => {
   if (!res) return {};
   const sitemap = createSitemap({
-    hostname: "http://www.oguzhan.codes"
+    hostname: "http://oguzhan.codes"
   });
   // Add any static entries here
   sitemap.add({ url: "/", changefreq: EnumChangefreq.DAILY });
   sitemap.add({ url: "/about", changefreq: EnumChangefreq.MONTHLY });
   // To add dynamic entries
-  const posts = await firebase.getBlogs();
-  posts.map(post => {
+  const products = await firebase.getBlogs();
+  for (const product of products) {
     sitemap.add({
-      url: `/${post.slug}`,
-      changefreq: EnumChangefreq.DAILY
+      url: `/${product.slug}`,
+      changefreq: EnumChangefreq.WEEKLY
     });
-  });
-
+  }
   res.setHeader("content-type", "application/xml");
-
   res.end(sitemap.toString());
-  return {};
 };
-export default Sitemap;
