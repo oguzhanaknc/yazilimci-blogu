@@ -1,10 +1,11 @@
 //blog ana sayfası
 import React from "react";
-
+import { NextSeo } from "next-seo";
 import GoogleWrapper from "../components/layout";
 
 const About = ({ posts }) => (
   <GoogleWrapper>
+    <NextSeo title='Oğuzhan Akıncı' description='Oğuzhan Akıncı Kimdir ? ' />
     <meta charset='utf-8' />
     <meta
       name='viewport'

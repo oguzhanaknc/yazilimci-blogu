@@ -10,6 +10,7 @@ import Mytable from "../components/table";
 import GoogleWrapper from "../components/layout";
 import * as firebase from "../server/firebaseFunction";
 import readtime from "../components/minread";
+import { NextSeo } from "next-seo";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,10 @@ class Home extends React.Component {
   render() {
     return (
       <GoogleWrapper>
+        <NextSeo
+          title='Oğuzhan Akıncı'
+          description='Oğuzhan Akıncı nın kişisel yazılım üzerine blog sitesi.'
+        />
         <div>
           <Head>
             <title>Oguzhan Akinci</title>

@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: 
+Disallow: /leveltwo
+
+Sitemap: http://www.oguzhan.codes/api/sitemap

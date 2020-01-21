@@ -7,12 +7,17 @@ import GoogleWrapper from "../components/layout";
 import * as firebase from "../server/firebaseFunction";
 import minread from "../components/minread";
 import NotFound from "./404";
+import { NextSeo } from "next-seo";
 function BlogPost({ post, comments, count, status }) {
   if (status) {
     return <NotFound />;
   }
   return (
     <GoogleWrapper>
+      <NextSeo
+        title={post.title}
+        description={post.content.substring(0, 140)}
+      />
       <div className='hero-container'>
         <Head>
           <link rel='icon' href='/favicon.ico' />
