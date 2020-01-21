@@ -1,7 +1,7 @@
 import { createSitemap, EnumChangefreq } from "sitemap";
 import * as firebase from "../server/firebaseFunction";
-import { NextPage } from "next";
-const Sitemap: NextPage = () => null;
+
+const Sitemap = () => null;
 Sitemap.getInitialProps = async ({ res }) => {
   if (!res) return {};
   const sitemap = createSitemap({

@@ -2,7 +2,7 @@ import * as firebase from "./server/firebaseFunction";
 
 const routes = [
   {
-    url: "", // Ana sayfamız için boş bırakıyoruz.
+    url: "/", // Ana sayfamız için boş bırakıyoruz.
     changeFreq: "daily",
     priority: 1
   },
