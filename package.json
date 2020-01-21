@@ -39,6 +39,7 @@
     "rxfire": "^3.9.4",
     "rxjs": "^6.5.3",
     "showdown": "^1.9.1",
+    "sitemap": "^5.1.0",
     "styletron-engine-atomic": "^1.4.4",
     "styletron-react": "^5.2.6"
   }

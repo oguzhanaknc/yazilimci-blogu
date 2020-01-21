@@ -44,7 +44,6 @@ export async function getBlog(postid) {
         }
       });
     });
-  console.log(blog);
 
   return blog;
 }
