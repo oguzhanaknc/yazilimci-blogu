@@ -29,8 +29,8 @@ const Mytable = ({ repos }) => (
       <style jsx>{`
         .card-wrapper {
           max-width: 260px;
-          margin-left: 68vmax;
-          margin-top: 35vw;
+          margin-left: 70vw;
+          margin-top: 40vw;
           height: 20px;
           text-align: center;
         }

@@ -99,7 +99,7 @@ class Home extends React.Component {
               .hero-container {
                 max-width: 750px;
                 width: 100%;
-                margin-left: 10%;
+                margin-left: 10vw;
                 float: left;
               }
               @media (max-width: 500px) {

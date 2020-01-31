@@ -26,7 +26,7 @@ const Me = props => (
         position: -webkit-sticky; /* Safari */
         position: sticky;
         max-width: 260px;
-        margin-left: 68vmax;
+        margin-left: 70vmax;
         margin-top: 20px;
         height: 20px;
       }
