@@ -2,32 +2,32 @@ import React from "react";
 import Link from "next/link";
 
 const Uparea = () => (
-  <div className='hero'>
+  <div className="hero">
     <div>
-      <h1 className='hero-title'>Oğuzhan A.</h1>
+      <h1 className="hero-title">Oğuzhan A.</h1>
 
-      <div className='hero-main-links'>
-        <Link href='http://oguzhan.codes/'>
-          <a className='main-link'>Anasayfa</a>
+      <div className="hero-main-links">
+        <Link href="/">
+          <a className="main-link">Anasayfa</a>
         </Link>
-        <Link href='/about'>
-          <a className='main-link'>Hakkımda</a>
+        <Link href="/about">
+          <a className="main-link">Hakkımda</a>
         </Link>
       </div>
       <div>
         <hr />
-        <div className='hero-social-links'>
-          <Link href='https://www.instagram.com/oguzhanaknc_/'>
-            <a className='hero-social'>Instagram</a>
+        <div className="hero-social-links">
+          <Link href="https://www.instagram.com/oguzhanaknc_/">
+            <a className="hero-social">Instagram</a>
           </Link>
-          <Link href='https://twitter.com/oguzhanaknc'>
-            <a className='hero-social'>Twitter</a>
+          <Link href="https://twitter.com/oguzhanaknc">
+            <a className="hero-social">Twitter</a>
           </Link>
-          <Link href='https://github.com/oguzhanaknc'>
-            <a className='hero-social'>Github</a>
+          <Link href="https://github.com/oguzhanaknc">
+            <a className="hero-social">Github</a>
           </Link>
-          <Link href='https://www.linkedin.com/in/oguzhanaknc/'>
-            <a className='hero-social'>Linkedin</a>
+          <Link href="https://www.linkedin.com/in/oguzhanaknc/">
+            <a className="hero-social">Linkedin</a>
           </Link>
         </div>
         <hr />

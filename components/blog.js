@@ -5,19 +5,21 @@ import Commentarea from "./comment";
 import CommentSarea from "./comments";
 const Blog = props => (
   <div>
-    <div className='card'>
-      <div className='card-image'>
-        <img src={props.image} />
-        <span className='card-title' href={"/" + props.slug}>
-          {props.title}
+    <div className="card">
+      <div className="card-image">
+        <img src={props.image} alt="Blog Resimleri" />
+        <span className="card-title">
+          <a className="blogtitle" href={"/" + props.slug}>
+            {props.title}
+          </a>
         </span>
       </div>
 
-      <div className='card-content'>
-        <div className='blog-min-read'>{props.readtime} min read</div>
+      <div className="card-content">
+        <div className="blog-min-read">{props.readtime} min read</div>
         <hr />
-        <ReactMarkdown className='blog-content' source={props.content} />
-        <div className='blog-date'>{props.date}</div>
+        <ReactMarkdown className="blog-content" source={props.content} />
+        <div className="blog-date">{props.date}</div>
       </div>
       {props.full != 1 && (
         <div>
@@ -27,7 +29,7 @@ const Blog = props => (
       )}
 
       {props.full == 1 && (
-        <div className='card-action'>
+        <div className="card-action">
           <Link href={props.slug}>
             <a>Devamını Oku</a>
           </Link>
@@ -36,6 +38,9 @@ const Blog = props => (
     </div>
 
     <style jsx>{`
+      .blogtitle {
+        color: #fff;
+      }
       @font-face {
         font-family: "Montserrat";
         src: url("../static/fonts/Montserrat-Regular.ttf");

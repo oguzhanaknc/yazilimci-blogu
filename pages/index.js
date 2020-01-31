@@ -26,13 +26,13 @@ class Home extends React.Component {
   render() {
     return (
       <GoogleWrapper>
+        <title>Oguzhan Akinci</title>
         <NextSeo
           title="Oğuzhan Akıncı"
           description="Oğuzhan Akıncı nın kişisel yazılım üzerine blog sitesi."
         />
         <div>
           <Head>
-            <title>Oguzhan Akinci</title>
             <link rel="icon" href="/favicon.ico" />
 
             <link href="/static/materialize.min.css" rel="stylesheet" />
@@ -54,7 +54,7 @@ class Home extends React.Component {
                   full={1}
                   readtime={readtime(post.content)}
                   image={post.image}
-                  key={post.id}
+                  key
                 />
               ))}
 
@@ -96,7 +96,7 @@ class Home extends React.Component {
           <style jsx>{`
             .hero-container {
               max-width: 750px;
-              with: 100%;
+              width: 100%;
               margin-left: 10%;
               float: left;
             }
