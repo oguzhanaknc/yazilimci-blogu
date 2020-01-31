@@ -12,13 +12,11 @@ const Me = props => (
           </div>
           <div className="card-content">
             <p>
-              <p>
-                {" "}
-                Son Durum : <a className="status"> {props.status.status}</a>
-              </p>
-              <hr />
-              {props.status.detail}
+              {" "}
+              Son Durum : <a className="status"> {props.status.status}</a>
             </p>
+            <hr />
+            <p>{props.status.detail}</p>
           </div>
         </div>
       </div>

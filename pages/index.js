@@ -25,89 +25,92 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <GoogleWrapper>
+      <>
         <title>Oguzhan Akinci</title>
-        <NextSeo
-          title="Oğuzhan Akıncı"
-          description="Oğuzhan Akıncı nın kişisel yazılım üzerine blog sitesi."
-        />
-        <div>
-          <Head>
-            <link rel="icon" href="/favicon.ico" />
 
-            <link href="/static/materialize.min.css" rel="stylesheet" />
+        <GoogleWrapper>
+          <NextSeo
+            title="Oğuzhan Akıncı"
+            description="Oğuzhan Akıncı nın kişisel yazılım üzerine blog sitesi."
+          />
+          <div>
+            <Head>
+              <link rel="icon" href="/favicon.ico" />
 
-            <style>{globalStyle}</style>
-          </Head>
+              <link href="/static/materialize.min.css" rel="stylesheet" />
 
-          <Uparea />
+              <style>{globalStyle}</style>
+            </Head>
 
-          <div className="hero-container">
-            {this.props.posts
-              .slice(this.state.alt, this.state.ust)
-              .map(post => (
-                <Blog
-                  title={post.title}
-                  content={post.content.substring(0, 450) + "..."}
-                  date={post.date}
-                  slug={post.slug}
-                  full={1}
-                  readtime={readtime(post.content)}
-                  image={post.image}
-                  key
-                />
-              ))}
+            <Uparea />
 
-            {0 <= this.state.alt - 3 && (
-              <button
-                className="btn waves-effect waves-light"
-                onClick={() => {
-                  this.setState({ alt: this.state.alt - 3 });
-                  this.setState({ ust: this.state.ust - 3 });
-                  window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                  });
-                }}
-              >
-                Önceki Sayfa
-              </button>
-            )}
-            {this.props.posts.length >= this.state.alt + 3 && (
-              <button
-                className="btn waves-effect waves-light"
-                onClick={() => {
-                  this.setState({ alt: this.state.alt + 3 });
+            <div className="hero-container">
+              {this.props.posts
+                .slice(this.state.alt, this.state.ust)
+                .map(post => (
+                  <Blog
+                    title={post.title}
+                    content={post.content.substring(0, 450) + "..."}
+                    date={post.date}
+                    slug={post.slug}
+                    full={1}
+                    readtime={readtime(post.content)}
+                    image={post.image}
+                    key
+                  />
+                ))}
 
-                  this.setState({ ust: this.state.ust + 3 });
-                  window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                  });
-                }}
-              >
-                Sonraki Sayfa
-              </button>
-            )}
-          </div>
+              {0 <= this.state.alt - 3 && (
+                <button
+                  className="btn waves-effect waves-light"
+                  onClick={() => {
+                    this.setState({ alt: this.state.alt - 3 });
+                    this.setState({ ust: this.state.ust - 3 });
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth"
+                    });
+                  }}
+                >
+                  Önceki Sayfa
+                </button>
+              )}
+              {this.props.posts.length >= this.state.alt + 3 && (
+                <button
+                  className="btn waves-effect waves-light"
+                  onClick={() => {
+                    this.setState({ alt: this.state.alt + 3 });
 
-          <Me status={this.props.status} />
-          <Mytable repos={this.props.repos} />
-          <style jsx>{`
-            .hero-container {
-              max-width: 750px;
-              width: 100%;
-              margin-left: 10%;
-              float: left;
-            }
-            @media (max-width: 500px) {
+                    this.setState({ ust: this.state.ust + 3 });
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth"
+                    });
+                  }}
+                >
+                  Sonraki Sayfa
+                </button>
+              )}
+            </div>
+
+            <Me status={this.props.status} />
+            <Mytable repos={this.props.repos} />
+            <style jsx>{`
               .hero-container {
-                margin-right: 10%;
+                max-width: 750px;
+                width: 100%;
+                margin-left: 10%;
+                float: left;
               }
-            }
-          `}</style>
-        </div>
-      </GoogleWrapper>
+              @media (max-width: 500px) {
+                .hero-container {
+                  margin-right: 10%;
+                }
+              }
+            `}</style>
+          </div>
+        </GoogleWrapper>
+      </>
     );
   }
 }
