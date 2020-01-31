@@ -3,7 +3,7 @@ import { firebase } from "../components/firebase";
 import ReactMde from "react-mde";
 import * as server from "../server/firebaseFunction";
 import * as Showdown from "showdown";
-
+//HACK: kodları parçala
 const converter = new Showdown.Converter({
   tables: true,
   simplifiedAutoLink: true,
@@ -89,29 +89,29 @@ class Adminpanel extends React.Component {
       value: draft.snap[draft.id].content
     });
   }
-
+  async deletePost() {} //TODO: yazı silmeyi ve düzenlmeyeyi yaz
   render() {
     return (
       <div>
-        <link href='/static/react-mde-all.css' rel='stylesheet' />
-        <link href='/static/materialize.min.css' rel='stylesheet' />
-        <div className='header'>
+        <link href="/static/react-mde-all.css" rel="stylesheet" />
+        <link href="/static/materialize.min.css" rel="stylesheet" />
+        <div className="header">
           <ul>
             <li>
-              <a href='/'>Blogu Gör</a>
+              <a href="/">Blogu Gör</a>
             </li>
             <li>
-              <a href='#'>Yazı Ekle</a>
+              <a href="#">Yazı Ekle</a>
             </li>
             <li>
-              <a href='#'>Yazılar</a>
+              <a href="#">Yazılar</a>
             </li>
             <li>
-              <a href='#'>Yorumlar</a>
+              <a href="#">Yorumlar</a>
             </li>
             <li>
               <a
-                className='cikis'
+                className="cikis"
                 onClick={() => {
                   firebase.auth().signOut();
 
@@ -124,32 +124,32 @@ class Adminpanel extends React.Component {
           </ul>
         </div>
 
-        <div className='add-text-area'>
-          <a className='add-text-area-title'>Yazı Ekle</a>
+        <div className="add-text-area">
+          <a className="add-text-area-title">Yazı Ekle</a>
           <hr />
           <input
             value={this.state.title}
             onChange={e => {
               this.setState({ title: e.target.value });
             }}
-            className='title'
-            placeholder='Başlık'
+            className="title"
+            placeholder="Başlık"
           ></input>
           <input
             onChange={e => {
               this.setState({ image: e.target.value });
             }}
             value={this.state.image}
-            className='baslik'
-            placeholder='Resim Linki'
+            className="baslik"
+            placeholder="Resim Linki"
           ></input>
           <input
             value={this.state.slug}
             onChange={e => {
               this.setState({ slug: e.target.value });
             }}
-            className='slug'
-            placeholder='Slug'
+            className="slug"
+            placeholder="Slug"
           ></input>
           <ReactMde
             value={this.state.value}
@@ -167,29 +167,29 @@ class Adminpanel extends React.Component {
               Promise.resolve(converter.makeHtml(markdown))
             }
           />
-          <div className='centered'>
+          <div className="centered">
             <button
-              className='waves-effect waves-light btn '
+              className="waves-effect waves-light btn "
               onClick={this.getDraft}
             >
               Son taslağı getir
             </button>
             <button
-              className='waves-effect waves-light btn'
+              className="waves-effect waves-light btn"
               onClick={this.createPost}
             >
               Gönder
             </button>
             <button
-              className='waves-effect waves-light btn '
+              className="waves-effect waves-light btn "
               onClick={this.draftPost}
             >
               Taslak Olarak Ekle
             </button>
           </div>
         </div>
-        <div className='little-areas'>
-          <a className='little-areas-title'>Durum Bilgisi</a>
+        <div className="little-areas">
+          <a className="little-areas-title">Durum Bilgisi</a>
 
           <input
             value={this.state.status}
@@ -198,18 +198,34 @@ class Adminpanel extends React.Component {
             }}
           ></input>
         </div>
-        <div className='little-areas'>
-          <a className='little-areas-title'>Detay Bilgisi</a>
+        <div className="little-areas">
+          <a className="little-areas-title">Detay Bilgisi</a>
 
           <textarea
-            id='textarea1'
-            className='materialize-textarea detail-area'
+            id="textarea1"
+            className="materialize-textarea detail-area"
             value={this.state.detail}
             onChange={this.setDetail}
           ></textarea>
         </div>
+        {this.state.posts && (
+          <div className="little-areas">
+            <a className="little-areas-title">Yazılar</a>
+
+            {this.state.posts.map(post => (
+              <p key>
+                {post.title} <button className="sil">Sil</button>
+                <button className="sil">Düzenle</button>
+              </p>
+            ))}
+          </div>
+        )}
 
         <style jsx>{`
+          .sil {
+            width: 12%;
+            margin-left: 3px;
+          }
           button {
             margin-top: 2px;
             width: 100%;

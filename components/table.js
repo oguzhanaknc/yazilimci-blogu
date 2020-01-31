@@ -3,17 +3,17 @@ import { BrowserView } from "react-device-detect";
 const Mytable = ({ repos }) => (
   <BrowserView>
     <div>
-      <div className='card-wrapper'>
-        <div className='card'>
-          <div className='card-content'>
-            <span className='card-title'>En son Github Repolarım 👩🏻‍💻</span>
-            <table className='centered'>
+      <div className="card-wrapper">
+        <div className="card">
+          <div className="card-content">
+            <span className="card-title">En son Github Repolarım 👩🏻‍💻</span>
+            <table className="centered">
               <tbody>
                 {repos.map(repo => (
                   <a key={repo.id} href={repo.svn_url}>
                     <tr>
                       <a>
-                        <td className='repo-text'>
+                        <td className="repo-text">
                           {repo.name} {repo.language}
                         </td>
                       </a>
@@ -29,8 +29,8 @@ const Mytable = ({ repos }) => (
       <style jsx>{`
         .card-wrapper {
           max-width: 260px;
-          margin-left: 70%;
-          margin-top: 36%;
+          margin-left: 68vmax;
+          margin-top: 35vw;
           height: 20px;
           text-align: center;
         }

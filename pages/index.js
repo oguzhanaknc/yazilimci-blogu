@@ -27,22 +27,22 @@ class Home extends React.Component {
     return (
       <GoogleWrapper>
         <NextSeo
-          title='Oğuzhan Akıncı'
-          description='Oğuzhan Akıncı nın kişisel yazılım üzerine blog sitesi.'
+          title="Oğuzhan Akıncı"
+          description="Oğuzhan Akıncı nın kişisel yazılım üzerine blog sitesi."
         />
         <div>
           <Head>
             <title>Oguzhan Akinci</title>
-            <link rel='icon' href='/favicon.ico' />
+            <link rel="icon" href="/favicon.ico" />
 
-            <link href='/static/materialize.min.css' rel='stylesheet' />
+            <link href="/static/materialize.min.css" rel="stylesheet" />
 
             <style>{globalStyle}</style>
           </Head>
 
           <Uparea />
 
-          <div className='hero-container'>
+          <div className="hero-container">
             {this.props.posts
               .slice(this.state.alt, this.state.ust)
               .map(post => (
@@ -60,7 +60,7 @@ class Home extends React.Component {
 
             {0 <= this.state.alt - 3 && (
               <button
-                className='btn waves-effect waves-light'
+                className="btn waves-effect waves-light"
                 onClick={() => {
                   this.setState({ alt: this.state.alt - 3 });
                   this.setState({ ust: this.state.ust - 3 });
@@ -75,7 +75,7 @@ class Home extends React.Component {
             )}
             {this.props.posts.length >= this.state.alt + 3 && (
               <button
-                className='btn waves-effect waves-light'
+                className="btn waves-effect waves-light"
                 onClick={() => {
                   this.setState({ alt: this.state.alt + 3 });
 

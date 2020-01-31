@@ -42,5 +42,10 @@
     "sitemap": "^5.1.0",
     "styletron-engine-atomic": "^1.4.4",
     "styletron-react": "^5.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.0",
+    "prettier": "^1.19.1"
   }
 }
