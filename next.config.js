@@ -1,6 +1,6 @@
 const webpack = require("webpack");
+require('dotenv').config()
 
-require("dotenv-flow").config();
 const withCSS = require("@zeit/next-css");
 module.exports = withCSS({
   cssModules: true
