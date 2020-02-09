@@ -15,7 +15,7 @@ Selman Kahyanın Başlattığı Blog Geliştirme Yarışması İçin Temellerini
 
 ### Yapılacaklar Listesi
 
-  - [x] Tasarımsal Değişiklikler
+ - [x] Tasarımsal Değişiklikler
   - [x] Fontları Değiştir
   - [x] Yazı Renklerini Değiştir
   - [x] Devamnı Oku Buttonu Ekle 
@@ -32,7 +32,7 @@ Selman Kahyanın Başlattığı Blog Geliştirme Yarışması İçin Temellerini
   - [x] Login Sayfası ekle
   - [x] Admin Sayfası Ekle
   
-  - [x] Eklenecek Özellikler
+ - [x] Eklenecek Özellikler
   - [x] Ortalama Okuma Süresini Hesapla
   - [x] Öne Çıkartılan Görsel Eklenemebilmesini Sağla 
   - [x] İlk Sayfada 240 Karakter Olacak Şekilde Yazıyı Böl
@@ -41,7 +41,7 @@ Selman Kahyanın Başlattığı Blog Geliştirme Yarışması İçin Temellerini
   - [x] Admin Girişi Yapıldı İse Yorumları Silebilme
   - [x] Admin Sayfası özellikleri
   
-  - [x] Backend ve Veritabanı 
+ - [x] Backend ve Veritabanı 
   - [x] Firebasede gerekli tabloları oluştur 
   - [x] Kullanıcı Giriş Çıkış İşlemleri EndPoint 
   - [x] Yazıları Firebase Üzerinden Çekecek EndPoint 
