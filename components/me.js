@@ -4,8 +4,8 @@ import { BrowserView } from "react-device-detect";
 const Me = props => (
   <div>
     <BrowserView>
-      <div className="card-wrapper">
-        <div className="card">
+      <div className="card-wrapper card">
+        <div>
           <div className="card-image">
             <img src="https://avatars1.githubusercontent.com/u/16177609?v=4" />
             <span className="card-title">Oğuzhan Akıncı</span>
@@ -25,11 +25,15 @@ const Me = props => (
       .card-wrapper {
         position: -webkit-sticky; /* Safari */
         position: sticky;
-        max-width: 260px;
-        margin-left: 70vmax;
-        margin-top: 20px;
-        height: 20px;
+        max-width: 20%;
+        margin-left: 70vw;
+        margin-top: 12.5vh;
+        height: 5%;
       }
+      @media (max-width: 500px) {
+        .card-wrapper {
+          display:none;
+        }
       .status {
         animation: blinkingText 0.8s infinite;
       }

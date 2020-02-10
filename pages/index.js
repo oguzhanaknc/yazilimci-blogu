@@ -97,14 +97,15 @@ class Home extends React.Component {
             <Mytable repos={this.props.repos} />
             <style jsx>{`
               .hero-container {
-                max-width: 750px;
+                max-width: 55%;
+
                 width: 100%;
-                margin-left: 10vw;
+                margin-left: 10%;
                 float: left;
               }
               @media (max-width: 500px) {
                 .hero-container {
-                  margin-right: 10%;
+                  max-width: 80%;
                 }
               }
             `}</style>

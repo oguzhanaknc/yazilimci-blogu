@@ -50,7 +50,9 @@ const Blog = props => (
       ul {
         list-style: none outside none;
       }
-
+      .card {
+        margin-top: 10%;
+      }
       li {
         position: relative;
         display: inline;

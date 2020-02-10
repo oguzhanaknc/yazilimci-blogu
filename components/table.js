@@ -3,7 +3,7 @@ import { BrowserView } from "react-device-detect";
 const Mytable = ({ repos }) => (
   <BrowserView>
     <div>
-      <div className="card-wrapper">
+      <div className="card card-wrapper">
         <div className="card">
           <div className="card-content">
             <span className="card-title">En son Github Repolarım 👩🏻‍💻</span>
@@ -28,12 +28,16 @@ const Mytable = ({ repos }) => (
 
       <style jsx>{`
         .card-wrapper {
-          max-width: 260px;
+          max-width: 20%;
           margin-left: 70vw;
-          margin-top: 40vw;
+          margin-top: 8%;
           height: 20px;
           text-align: center;
         }
+        @media (max-width: 500px) {
+          .card-wrapper {
+            display:none;
+          }
         .repo-text {
           color: #00838f;
         }
