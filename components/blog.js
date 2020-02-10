@@ -5,9 +5,11 @@ import Commentarea from "./comment";
 import CommentSarea from "./comments";
 const Blog = props => (
   <div>
-    <div className="card">
-      <div className="card-image">
-        <img src={props.image} alt="Blog Resimleri" />
+    <div className="card ">
+      <div className="card-image hoverable">
+        <a href={"/" + props.slug}>
+          <img src={props.image} alt="Blog Resimleri" />
+        </a>
         <span className="card-title">
           <a className="blogtitle" href={"/" + props.slug}>
             {props.title}
@@ -18,7 +20,10 @@ const Blog = props => (
       <div className="card-content">
         <div className="blog-min-read">{props.readtime} min read</div>
         <hr />
-        <ReactMarkdown className="blog-content" source={props.content} />
+        <ReactMarkdown
+          className="blog-content truncate"
+          source={props.content}
+        />
         <div className="blog-date">{props.date}</div>
       </div>
       {props.full != 1 && (
@@ -83,6 +88,9 @@ const Blog = props => (
         color: #000a12;
         margin: 10px 25px 25px 25px;
         font-family: "Montserrat", sans-serif;
+      }
+      card-image:hover {
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5) !important;
       }
     `}</style>
   </div>

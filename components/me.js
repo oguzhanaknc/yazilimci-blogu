@@ -6,7 +6,7 @@ const Me = props => (
     <BrowserView>
       <div className="card-wrapper card">
         <div>
-          <div className="card-image">
+          <div className="card-image ">
             <img src="https://avatars1.githubusercontent.com/u/16177609?v=4" />
             <span className="card-title">Oğuzhan Akıncı</span>
           </div>
@@ -53,6 +53,7 @@ const Me = props => (
         100% {
           color: #ff0000;
         }
+        
       }
     `}</style>
   </div>

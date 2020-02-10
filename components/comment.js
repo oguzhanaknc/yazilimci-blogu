@@ -13,36 +13,36 @@ class Commentarea extends React.Component {
     return (
       <>
         <hr />
-        <div key='0' className='hero'>
+        <div key="0" className="hero">
           <div>Yorum Yap</div>
           <br />
-          <div key='1' className='input-field col s6'>
-            <div key='2' className='input-field col s12'>
+          <div key="1" className="input-field col s6">
+            <div key="2" className="input-field col s12">
               <textarea
-                id='2'
-                className='materialize-textarea'
-                data-length='120'
-                placeholder='Adınız'
+                id="2"
+                className="materialize-textarea center-align"
+                data-length="120"
+                placeholder="Adınız"
                 onChange={e => {
                   this.setState({ author: e.target.value });
                 }}
               ></textarea>
             </div>
-            <div key='5' className='input-field col s12'>
+            <div key="5" className="input-field col s12">
               <textarea
-                id='2'
-                className='materialize-textarea'
-                data-length='120'
-                placeholder='Yorumunuz'
+                id="2"
+                className="materialize-textarea center-align"
+                data-length="120"
+                placeholder="Yorumunuz"
                 onChange={e => {
                   this.setState({ comment: e.target.value });
                 }}
               ></textarea>
             </div>
             <button
-              className='btn waves-effect waves-light'
-              type='submit'
-              name='action'
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
               onClick={() => {
                 let state = {
                   author: this.state.author,
@@ -53,7 +53,7 @@ class Commentarea extends React.Component {
               }}
             >
               Gönder
-              <i className='icon'>send</i>
+              <i className="icon">send</i>
             </button>
           </div>
         </div>
