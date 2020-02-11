@@ -18,12 +18,12 @@ function BlogPost({ post, comments, count, status }) {
         title={post.title}
         description={post.content.substring(0, 140)}
       />
-      <div className='hero-container'>
+      <div className="hero-container">
         <Head>
-          <link rel='icon' href='/favicon.ico' />
+          <link rel="icon" href="/favicon.ico" />
           <style>{globalStyle}</style>
 
-          <link href='/static/materialize.min.css' rel='stylesheet' />
+          <link href="/static/materialize.min.css" rel="stylesheet" />
         </Head>
 
         <Uparea />
@@ -52,6 +52,7 @@ function BlogPost({ post, comments, count, status }) {
 BlogPost.getInitialProps = async ({ req, query }) => {
   let post = await firebase.getBlog(query.postid);
   let com = await firebase.getComments(query.postid);
+
   let status;
   if (!post) {
     status = true;

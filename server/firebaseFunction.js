@@ -58,13 +58,14 @@ export async function getComments(postid) {
     .then(function(snapshot) {
       if (snapshot.val()) {
         count += snapshot.val().length - 1;
-        for (let i = 0; i <= Object.keys(snapshot.val()).length + 1; i++) {
+        for (let i = 0; i <= Object.keys(snapshot.val()).length + 10; i++) {
           if (snapshot.val()[i] && snapshot.val()[i].slug == postid) {
             mineComments.push(snapshot.val()[i]);
           }
         }
       }
     });
+
   return { comments: mineComments, count: count };
 }
 
@@ -160,9 +161,10 @@ export async function deleteComment(comment) {
 }
 
 export async function setCommet(state, id, slug) {
+  id => (id ? id : 0);
   await firebase
     .database()
-    .ref("comments/" + id)
+    .ref("comments/" + parseInt(parseInt(id) + parseInt(1)))
     .set({
       author: state.author,
       comment: state.comment,
