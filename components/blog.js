@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+
 import Commentarea from "./comment";
+import CodeBlock from "./codeblog";
 import CommentSarea from "./comments";
 const Blog = props => (
   <div>
@@ -21,8 +23,9 @@ const Blog = props => (
         <div className="blog-min-read">{props.readtime} min read</div>
         <hr />
         <ReactMarkdown
-          className="blog-content truncate"
+          className="blog-content "
           source={props.content}
+          renderers={{ code: CodeBlock }}
         />
         <div className="blog-date">{props.date}</div>
       </div>
@@ -46,9 +49,12 @@ const Blog = props => (
       .blogtitle {
         color: #fff;
       }
+      .blog-content {
+        word-wrap: break-word;
+      }
       @font-face {
-        font-family: "Montserrat";
-        src: url("../static/fonts/Montserrat-Regular.ttf");
+        font-family: "ZillaSlab-Medium";
+        src: url("../static/fonts/ZillaSlab-Medium.ttf");
         font-style: normal;
         font-display: swap;
       }
@@ -57,6 +63,7 @@ const Blog = props => (
       }
       .card {
         margin-top: 10%;
+        word-wrap: break-word;
       }
       li {
         position: relative;
@@ -74,7 +81,7 @@ const Blog = props => (
         margin-left: 30%;
         color: #002f6c;
         font-size: 28px;
-        font-family: "Montserrat", sans-serif;
+        font-family: "ZillaSlab-Medium", sans-serif;
       }
       a {
         color: #002f6c;
@@ -87,7 +94,7 @@ const Blog = props => (
         text-align: right;
         color: #000a12;
         margin: 10px 25px 25px 25px;
-        font-family: "Montserrat", sans-serif;
+        font-family: "ZillaSlab-Medium", sans-serif;
       }
       card-image:hover {
         box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5) !important;
