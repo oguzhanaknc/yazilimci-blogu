@@ -11,6 +11,7 @@ import GoogleWrapper from "../components/layout";
 import * as firebase from "../server/firebaseFunction";
 import readtime from "../components/minread";
 import { NextSeo } from "next-seo";
+import Footerx from "../components/footer";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -37,14 +38,14 @@ class Home extends React.Component {
             <Head>
               <link rel="icon" href="/favicon.ico" />
 
-              <link href="/static/materialize.min.css" rel="stylesheet" />
+              <link href="../static/materialize.min.css" rel="stylesheet" />
 
               <style>{globalStyle}</style>
             </Head>
 
             <Uparea />
 
-            <div className="hero-container">
+            <div className="hero-container col s7 push-s5">
               {this.props.posts
                 .slice(this.state.alt, this.state.ust)
                 .map(post => (
@@ -92,23 +93,34 @@ class Home extends React.Component {
                 </button>
               )}
             </div>
+            <div className="col s5 pull-s7 divingo">
+              <Me status={this.props.status} />
+              <Mytable repos={this.props.repos} />
+            </div>
 
-            <Me status={this.props.status} />
-            <Mytable repos={this.props.repos} />
             <style jsx>{`
               .hero-container {
                 max-width: 55%;
 
                 width: 100%;
                 margin-left: 10%;
-                float: left;
+              }
+              .divingo {
+                position: absolute;
+                top: 29vh;
               }
               @media (max-width: 500px) {
                 .hero-container {
                   max-width: 80%;
                 }
+                .containers {
+                  margin-top: 50px;
+                }
               }
             `}</style>
+            <div className="containers">
+              <Footerx />
+            </div>
           </div>
         </GoogleWrapper>
       </>

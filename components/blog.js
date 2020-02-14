@@ -51,6 +51,7 @@ const Blog = props => (
       }
       .blog-content {
         word-wrap: break-word;
+        font-family: "ZillaSlab-Medium", sans-serif;
       }
       @font-face {
         font-family: "ZillaSlab-Medium";
