@@ -36,7 +36,7 @@ class Home extends React.Component {
           />
           <div>
             <Head>
-              <link rel="icon" href="/favicon.ico" />
+              <link rel="icon" href="../static/favicon.ico" />
 
               <link href="../static/materialize.min.css" rel="stylesheet" />
 

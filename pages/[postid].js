@@ -20,7 +20,7 @@ function BlogPost({ post, comments, count, status }) {
       />
       <div className="hero-container">
         <Head>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="../static/favicon.ico" />
           <style>{globalStyle}</style>
 
           <link href="/static/materialize.min.css" rel="stylesheet" />
