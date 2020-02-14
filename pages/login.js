@@ -1,6 +1,7 @@
 import React from "react";
 import { firebase } from "../components/firebase";
 import * as router from "../components/router";
+import sha1 from "sha1";
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +36,7 @@ export default class Login extends React.Component {
                 type="password"
                 placeholder="password"
                 onChange={e => {
-                  this.setState({ pass: e.target.value });
+                  this.setState({ pass: sha1(e.target.value) });
                 }}
               ></input>
             </div>

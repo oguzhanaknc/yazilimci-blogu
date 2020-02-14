@@ -8,6 +8,7 @@ import * as firebase from "../server/firebaseFunction";
 import minread from "../components/minread";
 import NotFound from "./404";
 import { NextSeo } from "next-seo";
+import Footerx from "../components/footer";
 function BlogPost({ post, comments, count, status }) {
   if (status) {
     return <NotFound />;
@@ -46,6 +47,7 @@ function BlogPost({ post, comments, count, status }) {
           }
         `}</style>
       </div>
+      <Footerx />
     </GoogleWrapper>
   );
 }

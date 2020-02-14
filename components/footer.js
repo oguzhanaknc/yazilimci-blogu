@@ -21,20 +21,14 @@ const Footerx = () => (
       </div>
       <div class="footer-copyright">
         <div class="container">
-          <a
-            rel="license"
-            href="http://creativecommons.org/licenses/by-nc/4.0/"
-          ></a>
+          <a rel="license" href="http://www.oguzhan.codes/license.txt"></a>
           <br />
-          Bu internet sitesi{" "}
-          <a
-            rel="license"
-            href="http://creativecommons.org/licenses/by-nc/4.0/"
-          >
+          MIT License{" "}
+          <a rel="license" href="http://www.oguzhan.codes/license.txt">
             {" "}
-            Creative Commons Atıf-GayriTicari 4.0 Uluslararası Lisansı
+            Copyright (c)
           </a>{" "}
-          ile lisanslanmıştır.
+          2020 Oğuzhan Akıncı
         </div>
       </div>
     </footer>

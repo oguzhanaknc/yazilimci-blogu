@@ -132,6 +132,7 @@ Home.getInitialProps = async ({ req }) => {
   const resforrepo = await fetch(
     `https://api.github.com/users/oguzhanaknc/repos?sort=created`
   );
+
   let posts = await firebase.getBlogs();
   let status = await firebase.getStatus();
   posts = posts.reverse();
