@@ -21,7 +21,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "markdown-it": "^10.0.0",
     "materialize-css": "^1.0.0-rc.2",
-    "next": "9.1.4",
+    "next": "11.1.0",
     "next-seo": "^3.2.0",
     "pagination": "^0.4.6",
     "prism-react-renderer": "^1.0.2",
