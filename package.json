@@ -19,7 +19,7 @@
     "dotenv-flow": "^3.1.0",
     "firebase": "^7.6.1",
     "isomorphic-unfetch": "^3.0.0",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "materialize-css": "^1.0.0-rc.2",
     "next": "9.1.4",
     "next-seo": "^3.2.0",
